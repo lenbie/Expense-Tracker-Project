@@ -1,0 +1,122 @@
+commit 728f1807eb7593e2ecc4d81f4c91a6131550a3e6
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 14:05:05 2023 +0200
+
+    del file1.txt
+
+ new/file1.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 97399ca3009da4f95124b58434d2eab6c4af74ba
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 14:04:47 2023 +0200
+
+    renaming file2
+
+ new/{file2.txt => file22.txt} | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 419baff663b810c23e288e3bebcf925e7f76eeda
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 13:49:51 2023 +0200
+
+    add new dir
+
+ new/file1.txt | 0
+ new/file2.txt | 0
+ new/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 6e89575aa034f742f12f151cf22d79e85f5cd691
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 13:35:48 2023 +0200
+
+    changing eka.txt and kolmas.txt
+
+ eka.txt    | 4 ++--
+ kolmas.txt | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 2436e9a6552aeda81e261977e346f20e511ae87a
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 13:32:25 2023 +0200
+
+    renaming file.txt
+
+ file.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8457cdbda8f135dc111e3f19512effcc7c289c9d
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 13:30:37 2023 +0200
+
+    deleting toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 03d99523c4ed769181f1e3aae4c18b4341ec32d5
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 13:26:40 2023 +0200
+
+    del and add file.txt
+
+ file.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit c8247e9bdb960b91ddd19361c60ab08e05e4e66a
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 13:24:30 2023 +0200
+
+    adding text file.txt
+
+ file.txt | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+commit bf8f48c2dedde5b33e89c28c72d2d6b9828c8561
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 13:13:53 2023 +0200
+
+    adding directory stuff
+
+ stuff/another.txt | 0
+ stuff/example.txt | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 433c13b05ca02536186513cc18f1e00a26a3da38
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 13:10:16 2023 +0200
+
+    changing
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 29344684a4fb3b9ddc9afb1201374b3d40f37249
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 13:07:53 2023 +0200
+
+    adding
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 87b6f4ebf42853026aad7963cca1952f3d1097af
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 13:02:00 2023 +0200
+
+    muutos ja lisäys
+
+ file.txt   | 1 +
+ toinen.txt | 0
+ 2 files changed, 1 insertion(+)
+
+commit 566d016b625d6c6f324575cdd96de728c4e854e9
+Author: Lene Bierstedt <email omitted>
+Date:   Tue Mar 21 12:57:42 2023 +0200
+
+    file.txt luotu
+
+ file.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
