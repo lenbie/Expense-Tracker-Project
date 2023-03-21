@@ -1,5 +1,5 @@
 commit 728f1807eb7593e2ecc4d81f4c91a6131550a3e6
-Author: Lene Bierstedt <email omitted>
+Author: Lene Bierstedt <email omitted for privacy purposes>
 Date:   Tue Mar 21 14:05:05 2023 +0200
 
     del file1.txt
