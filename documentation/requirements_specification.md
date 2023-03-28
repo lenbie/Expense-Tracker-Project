@@ -1,4 +1,4 @@
-# Requirements specifications
+# Requirements specification document
 
 ## The purpose of the application
 
