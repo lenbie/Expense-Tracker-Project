@@ -6,6 +6,6 @@
 
 ## Functionalities
 
-#   Basic Functionalities
+###   Basic Functionalities
 
-#   Further development ideas	
+###   Further development ideas	
