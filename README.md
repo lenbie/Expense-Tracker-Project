@@ -2,9 +2,9 @@
 
 *This repository contains tasks from the Ohjelmistotekniikka 2023 course from Helsingin Yliopisto.*
 
-##Project Work
+## Project Work
 
-###Documentation
+### Documentation
 
 The [timekeeping](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/timekeeping.md) document contains information on the hours spent on various project tasks.
 
