@@ -13,11 +13,12 @@
   lippu_lukku->>Matkakortti: Matkakortti(Kalle)
   lippu_luukku-->>kallen_kortti: uusi_kortti
   main->>rautatietori: lataa_arvoa(kallen_kortti, 3)
-  rautatietori->>kallen_kortti: kasvata_arvoa(3)
+  rautatietori->>+kallen_kortti: kasvata_arvoa(3)
+  deactivate kallen_kortti
   main->>+ratikka6: osta_lippu(kallen_kortti, 0)
   ratikka6->>Main: RATIKKA
   Main-->>ratikka6: 1.5
-  ratikka6->>+kallen_kortti: kortti.arvoa
+  ratikka6->>+kallen_kortti: kortti.arvo
   kallen_kortti-->>-ratikka6: 3
   ratikka6->>+kallen_kortti: vahenna_arvoa(1.5)
   deactivate kallen_kortti
@@ -25,7 +26,7 @@
   main->>+bussi244: osta_lippu(kallen_kortti, 2)
   bussi244->>Main: SEUTU
   Main-->>bussi244: 3.5
-  bussi244->>+kallen_kortti: kortti.arvoa
+  bussi244->>+kallen_kortti: kortti.arvo
   kallen_kortti-->>-bussi244: 1.5
   bussi244-->>-main: False
   
