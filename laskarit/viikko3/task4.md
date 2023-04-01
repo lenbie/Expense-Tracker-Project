@@ -17,9 +17,10 @@
   main->>+ratikka6: osta_lippu(kallen_kortti, 0)
   ratikka6->>Main: RATIKKA
   Main-->>ratikka6: 1.5
-  ratikka6->>kallen_kortti: kortti.arvoa
-  kallen_kortti-->>ratikka6: 3
-  ratikka6->>kallen_kortti: vahenna_arvoa(1.5)
+  ratikka6->>+kallen_kortti: kortti.arvoa
+  kallen_kortti-->>-ratikka6: 3
+  ratikka6->>+kallen_kortti: vahenna_arvoa(1.5)
+  deactivate kallen_kortti
   ratikka6-->>-main: True
   main->>bussi244: osta_lippu(kallen_kortti, 2)
   bussi244->>Main: SEUTU
