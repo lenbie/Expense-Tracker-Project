@@ -45,11 +45,11 @@ Monopoly
       class Community_chest{
           function()
       }
-    Community_chest "3" -- Community_chest_card
+    Community_chest "3" -- "16" Community_chest_card
       class Community_chest_card{
         function()
       }
-    Chance "3" -- Chance_card
+    Chance "3" -- "16" Chance_card
       class Chance_card{
         function()
       }
