@@ -2,13 +2,10 @@
   sequenceDiagram
   participant main
   participant Machine
-  main->>Machine: Machine()
-  activate Machine
-  Machine->>FuelTank: FuelTank()
-  activate FuelTahnk
+  main->>+Machine: Machine()
+  Machine->>+FuelTank: FuelTank()
   Machine->>FuelTank: fill(40)
-  Machine->>Engine: Engine(40)
-  activate Engine
+  Machine->>+Engine: Engine(40)
   main->>Machine: drive()
   Machine->>Engine
 ````
