@@ -33,8 +33,8 @@ Monopoly
         location
         function()
       }
-    Monopoly_Game "1" -- "1" Start
-    Monopoly_Game "1" -- "1" Prison
+    Monopoly_game "1" -- "1" Start
+    Monopoly_game "1" -- "1" Prison
     Tile "40" <-- "1" Prison
       class Prison{
         location
