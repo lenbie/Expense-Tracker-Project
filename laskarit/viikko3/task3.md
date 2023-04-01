@@ -1,8 +1,10 @@
 ```mermaid
   sequenceDiagram
-  participant Main
+  participant main
   participant Machine
-  Main ->> Machine: Machine()
-  
+  main->>Machine: Machine()
+  Machine->>FuelTank: FuelTank()
+  Machine->>FuelTank: fill(40)
+  Machine->>Engine: Engine(40)
 
 ````
