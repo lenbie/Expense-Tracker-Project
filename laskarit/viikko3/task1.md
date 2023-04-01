@@ -22,5 +22,5 @@ Monopoly
         Player "2..8" -- "1" Game_piece
         class Game_piece{
         }
-        Tile "40" --> "1" Game_piece
+        Tile "40" -- "1" Game_piece
 ```
