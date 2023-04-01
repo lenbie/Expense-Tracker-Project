@@ -7,8 +7,8 @@ Monopoly
   classDiagram
     Monopoly_game "1" -- "1" Game_board
       class Monopoly_game{
-        start.location
-        prison.location
+        start_location
+        prison_location
       }
       class Game_board{
       }
@@ -22,6 +22,7 @@ Monopoly
     Game_board "1" -- "40" Tile
       class Tile{
         next
+        function()
       }
     Player "2..8" -- "1" Game_piece
       class Game_piece{
