@@ -28,5 +28,4 @@ Monopoly
       class Game_piece{
       }
     Tile "40" -- "1" Game_piece"
-    
 ```
