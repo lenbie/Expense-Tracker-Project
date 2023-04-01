@@ -52,7 +52,7 @@ Monopoly
       class Community_chest_card{
         function()
       }
-    Chance "3" <-- "16" Chance_card
+    Chance "3" -- "16" Chance_card
       class Chance_card{
         function()
       }
