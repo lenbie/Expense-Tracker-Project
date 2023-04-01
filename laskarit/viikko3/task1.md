@@ -1,5 +1,5 @@
 --
-title: Monopoly
+Monopoly
 ---
 ```mermaid
   classDiagram
@@ -7,5 +7,8 @@ title: Monopoly
         class Monopoly game{
                 }
         class Game board{
+        }
+        Monopoly game "1" --> "2" Dice
+        class Dice{
         }
 ```
