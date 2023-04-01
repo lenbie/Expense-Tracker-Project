@@ -22,7 +22,6 @@ Monopoly
     Game_board "1" -- "40" Tile
       class Tile{
         next
-        function()
       }
     Player "2..8" -- "1" Game_piece
       class Game_piece{
