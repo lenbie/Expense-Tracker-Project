@@ -1,5 +1,6 @@
 ```mermaid
   sequenceDiagram
+  Main->>main: main()
   main->>laitehallinto: HKLLaitehallinto()
   main->>rautatietori: Lataajalaite()
   main->>ratikka6: Lukijalaite()
@@ -20,6 +21,8 @@
   kallen_kortti-->>ratikka6: 3
   ratikka6->>kallen_kortti: vahenna_arvoa(1.5)
   ratikka6-->>main: True
+  main->>bussi244: osta_lippu(kallen_kortti, 2)
+  
   
   
   
