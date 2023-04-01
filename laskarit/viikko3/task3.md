@@ -14,7 +14,7 @@
     Machine->>Engine: is_running()
     Engine->>FuelTank: fuel_contents()
     FuelTank->>Engine: fuel_contents()
-    Engine-)Machine: True
+    Engine-->>Machine: True
     Machine->>Engine: use_energy()
     Engine->>FuelTank: consume(10)
     deactivate Machine
