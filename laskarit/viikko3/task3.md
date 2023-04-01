@@ -8,7 +8,9 @@
     Machine->>+Engine: Engine(40)
     deactivate Engine
     deactivate Machine
-    main->>Machine: drive()
-    Machine->>Engine: start()
+    main->>+Machine: drive()
+    Machine->>+Engine: start()
+    Engine->>+FuelTank: consume(5)
+    
     
 ````
