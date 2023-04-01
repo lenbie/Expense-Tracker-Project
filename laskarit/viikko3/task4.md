@@ -25,8 +25,8 @@
   main->>+bussi244: osta_lippu(kallen_kortti, 2)
   bussi244->>Main: SEUTU
   Main-->>bussi244: 3.5
-  bussi244->>kallen_kortti: kortti.arvoa
-  kallen_kortti-->>bussi244: 1.5
+  bussi244->>+kallen_kortti: kortti.arvoa
+  kallen_kortti-->>-bussi244: 1.5
   bussi244-->>-main: False
   
   
