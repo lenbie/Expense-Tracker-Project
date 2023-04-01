@@ -8,7 +8,7 @@
   Machine->>+Engine: Engine(40)
   main->>Machine: drive()
   Machine->>Engine
-  Machine deactivate
-  FuelTank deactivate
-  Engine deactivate
+  deactivate Machine
+  deactivate FuelTank
+  deactivate Engine
 ````
