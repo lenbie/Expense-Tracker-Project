@@ -1,4 +1,3 @@
---
 Monopoly
 ---
 ```mermaid
@@ -10,5 +9,8 @@ Monopoly
         }
         Monopoly game "1" --> "2" Dice
         class Dice{
+        }
+        Monopoly game "1! --> "2-8" Players
+        class Players{
         }
 ```
