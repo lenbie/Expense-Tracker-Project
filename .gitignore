@@ -1,4 +1,3 @@
-__pycache__
-.coverage
-htmlcov
-.pytest_cache
+[pytest]
+env_files =
+    .env.test

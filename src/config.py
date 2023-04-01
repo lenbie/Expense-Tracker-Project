@@ -7,3 +7,8 @@ try:
 except FileNotFoundError:
     pass
 
+EXPENSES_FILE=os.getenv("EXPENSE_FILE") or "expenses.csv"
+EXPENSES_FILE_PATH=os.path.join(dirname, "..", "data", EXPENSES_FILE)
+
+DATABASE_FILENAME = os.getenv("DATABASE_FILENAME") or "database.sqlite"
+DATABASE_FILE_PATH = os.path.join(dirname, "..", "data", DATABASE_FILENAME)
