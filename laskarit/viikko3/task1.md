@@ -12,7 +12,11 @@ Monopoly
         Monopoly game "1" --> "2" Dice
         class Dice{
         }
-        Monopoly game "1" --> "2..8" Players
-        class Players{
+        Monopoly game "1" --> "2..8" Player
+        class Player{
+        }
+        Game board "1" --> "40" Tile
+        class Tile{
+          next
         }
 ```
