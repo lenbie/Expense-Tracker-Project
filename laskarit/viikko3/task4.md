@@ -11,7 +11,7 @@
   main->>lippu_luukku: Kioski()
   main->>lippu_luukku: osta_matkakortti("Kalle")
   
-  lippu_luukku-->>kallen_kortti: Matkakortti(Kalle)
+  lippu_luukku->>kallen_kortti: Matkakortti(Kalle)
   main->>rautatietori: lataa_arvoa(kallen_kortti, 3)
   rautatietori->>+kallen_kortti: kasvata_arvoa(3)
   deactivate kallen_kortti
