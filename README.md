@@ -14,7 +14,7 @@ The [timekeeping](https://github.com/lenbie/ot-harjoitustyo/blob/master/document
 
 The [requirements specification](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/requirements_specification.md) document contains the initial requirements defined for the project, including purpose, users and functionalities.
 
-The changelog document contains details on what changes were made to the project during each week of the course, starting from week 3.
+The [changelog] (https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/changelog.md) document contains details on what changes were made to the project during each week of the course, starting from week 3.
 
 ### Installation
 
