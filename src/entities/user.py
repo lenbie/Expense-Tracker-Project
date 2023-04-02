@@ -5,7 +5,7 @@ class User:
     Attributes:
         username (string): The user's unique username
         password (string): The user's password
-        
+
     """
 
     def __init__(self, username: str, password: str):

@@ -3,38 +3,36 @@ from database_connection import connect_to_database
 
 class UserRepository:
     def __init__(self):
-        self.connection=connect_to_database()
+        self._connection = connect_to_database()
 
-    def add_user(self, user=User()):
+    def add_user(self, user=User):
         
-        cursor=self.connection.cursor()
+        cursor = self._connection.cursor()
 
         cursor.execute("""
-            "insert into users (username, password) values (?, ?)",
+            insert into users (username, password) values (?, ?)""",
             (user.username, user.password)
-        """) #add somewhere else that this only works if username not present
+            )
 
-        self.connection.commit()
+        self._connection.commit()
 
     def find_user(self, username):
 
-        cursor=self.connection.cursor()
+        cursor = self._connection.cursor()
 
-        found= cursor.execute("""
+        cursor.execute("""
             select
                 username,
                 password
             from
                 users
             where
-                username
-            like
-                "username";
-        """)
-
-        self.connection.commit()
+                username=:c""",
+            {"c": username}
+        )
+        
+        found=cursor.fetchone()
     
         return found
-    
 
  
