@@ -2,6 +2,7 @@ from database_connection import connect_to_database
 
 def create_users_table(connection):
     cursor = connection.cursor()
+    
     cursor.execute("""
         create table if not exists users ( 
             username text primary key,
@@ -27,19 +28,25 @@ def create_expenses_table(connection):
 
 def drop_user_table(connection):
     cursor = connection.cursor()
+
     cursor.execute("""
         drop table if exists users;
     """)
+
     cursor = connection.cursor()
 
 def drop_expenses_table(connection):
+
     cursor = connection.cursor()
+
     cursor.execute("""
         drop table if exists expenses;
     """)
+
     cursor = connection.cursor()
 
 def initialize_database():
+
     connection=connect_to_database()    
 
     drop_user_table(connection)
