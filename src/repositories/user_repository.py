@@ -35,4 +35,22 @@ class UserRepository:
     
         return found
 
- 
+    def delete_all_users(self):
+
+        cursor=self._connection.cursor()
+        
+        cursor.execute("""
+        delete from users;
+        """)
+    
+    def find_all_users(self):
+        
+        cursor=self._connection.cursor()
+
+        cursor.execute("""
+        select * from users
+        """)
+
+        found=cursor.fetchall()
+        
+        return found
