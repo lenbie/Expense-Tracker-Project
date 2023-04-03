@@ -4,11 +4,11 @@
 
 ## Expense Tracker Project
 
-### Python version
+## Python version
 
 Note that Python version 3.10.6 was used for creating and testing this project.
 
-### Documentation
+## Documentation
 
 The [timekeeping](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/timekeeping.md) document contains information on the hours spent on various project tasks.
 
@@ -16,7 +16,7 @@ The [requirements specification](https://github.com/lenbie/ot-harjoitustyo/blob/
 
 The [changelog](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/changelog.md) document contains details on what changes were made to the project during each week of the course, starting from week 3.
 
-### Installation
+## Installation
 
 1. Install dependencies through command line using:
 
@@ -33,7 +33,31 @@ Poetry run invoke initialize
 3. Start the application using: 
 
 ```bash
-Poetry run Invoke start
+Poetry run invoke start
 ```
 
 ### Command line functions
+
+## Starting the application
+
+Start the application using: 
+
+```bash
+Poetry run invoke start
+```
+
+## Testing
+
+Run tests using:
+
+```bash
+Poetry run invoke test
+```
+
+## Test Coverage Report
+
+Create the html test coverage report using:
+
+```bash
+Poetry run invoke coverage-report
+```
