@@ -3,13 +3,10 @@ from repositories.user_repository import UserRepository
 from database_initialization import initialize_database
 from services.expense_service import ExpenseService
 
-
 print("""
     NOTE: This is a temporary version of main.py
     for starting the program before the necessary UI exists.
 """)
-      
-initialize_database()
 
 start_repository=UserRepository()
 start_expense_service=ExpenseService(start_repository)
@@ -29,7 +26,7 @@ username=str(input("""
 password=str(input("""
     Choose a password. It must be at least 8 characters long,
     and include at least 1 number and 1 special character.
-    
+
     Insert password here: """))
 
 start_expense_service.create_new_user(username, password)
