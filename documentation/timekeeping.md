@@ -7,3 +7,5 @@
 |02.04.| 2 hours    | Familiarization with sqlite3 and database initialization implementation|
 |02.04.| 3 hours    | Adding User, Expense, Category, UserRepository, ExpenseService classes and initial functionality|
 |03.04.| 3 hours    | Updating the previously created classes and creating tests for UserRepository and ExpenseService|
+||   | |
+|Total| 11 hours   | |
