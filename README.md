@@ -18,4 +18,22 @@ The [changelog](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentat
 
 ### Installation
 
+1. Install dependencies through command line using:
+
+```bash
+Poetry install
+```
+
+2. Perform necessary initialization using:
+
+```bash
+Poetry run invoke initialize
+```
+
+3. Start the application using: 
+
+```bash
+Poetry run Invoke start
+```
+
 ### Command line functions
