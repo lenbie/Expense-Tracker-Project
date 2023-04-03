@@ -21,19 +21,19 @@ The [changelog](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentat
 1. Install dependencies through command line using:
 
 ```bash
-Poetry install
+poetry install
 ```
 
 2. Perform necessary initialization using:
 
 ```bash
-Poetry run invoke initialize
+poetry run invoke initialize
 ```
 
 3. Start the application using: 
 
 ```bash
-Poetry run invoke start
+poetry run invoke start
 ```
 
 ## Command line functions
@@ -43,7 +43,7 @@ Poetry run invoke start
 Start the application using: 
 
 ```bash
-Poetry run invoke start
+poetry run invoke start
 ```
 
 ### Testing
@@ -51,7 +51,7 @@ Poetry run invoke start
 Run tests using:
 
 ```bash
-Poetry run invoke test
+poetry run invoke test
 ```
 
 ### Test Coverage Report
@@ -59,5 +59,5 @@ Poetry run invoke test
 Create the html test coverage report using:
 
 ```bash
-Poetry run invoke coverage-report
+poetry run invoke coverage-report
 ```
