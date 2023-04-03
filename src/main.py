@@ -11,8 +11,6 @@ print("""
       
 initialize_database()
 
-print("Would you like")
-
 start_repository=UserRepository()
 start_expense_service=ExpenseService(start_repository)
 
@@ -25,10 +23,18 @@ print("""
     please answer the next questions.
 """)
     
-username=str(input("Choose a username"))
+username=str(input("""
+    Choose a username: """))
 
 password=str(input("""
     Choose a password. It must be at least 8 characters long,
-    and include at least 1 number and 1 special character"""))
+    and include at least 1 number and 1 special character.
+    
+    Insert password here: """))
 
 start_expense_service.create_new_user(username, password)
+
+found=start_repository.find_user(username)
+
+if found!=None and found["username"]==username:
+    print("User account successfully created. Thank you!")
