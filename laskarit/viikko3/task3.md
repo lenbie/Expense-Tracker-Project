@@ -11,12 +11,16 @@
     main->>+Machine: drive()
     Machine->>+Engine: start()
     Engine->>+FuelTank: consume(5)
-    Machine->>Engine: is_running()
-    Engine->>FuelTank: fuel_contents()
+    deactivate Engine
+    deactivate FuelTank
+    Machine->>+Engine: is_running()
+    Engine->>+FuelTank: fuel_contents()
     FuelTank-->>Engine: 35
+    deactivate FuelTank
     Engine-->>Machine: True
-    Machine->>Engine: use_energy()
-    Engine->>FuelTank: consume(10)
+    deactivate Engine
+    Machine->>+Engine: use_energy()
+    Engine->>+FuelTank: consume(10)
     deactivate Machine
     deactivate Engine
     deactivate FuelTank
