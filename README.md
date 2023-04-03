@@ -36,9 +36,9 @@ Poetry run invoke initialize
 Poetry run invoke start
 ```
 
-### Command line functions
+## Command line functions
 
-## Starting the application
+### Starting the application
 
 Start the application using: 
 
@@ -46,7 +46,7 @@ Start the application using:
 Poetry run invoke start
 ```
 
-## Testing
+### Testing
 
 Run tests using:
 
@@ -54,7 +54,7 @@ Run tests using:
 Poetry run invoke test
 ```
 
-## Test Coverage Report
+### Test Coverage Report
 
 Create the html test coverage report using:
 
