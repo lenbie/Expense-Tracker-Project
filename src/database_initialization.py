@@ -1,8 +1,9 @@
 from database_connection import connect_to_database
 
+
 def create_users_table(connection):
     cursor = connection.cursor()
-    
+
     cursor.execute("""
         create table if not exists users ( 
             username text primary key,
@@ -11,6 +12,7 @@ def create_users_table(connection):
     """)
 
     connection.commit()
+
 
 def create_expenses_table(connection):
     cursor = connection.cursor()
@@ -26,6 +28,7 @@ def create_expenses_table(connection):
 
     connection.commit()
 
+
 def drop_user_table(connection):
     cursor = connection.cursor()
 
@@ -34,6 +37,7 @@ def drop_user_table(connection):
     """)
 
     cursor = connection.cursor()
+
 
 def drop_expenses_table(connection):
 
@@ -45,15 +49,17 @@ def drop_expenses_table(connection):
 
     cursor = connection.cursor()
 
+
 def initialize_database():
 
-    connection=connect_to_database()    
+    connection = connect_to_database()
 
     drop_user_table(connection)
     drop_expenses_table(connection)
 
     create_users_table(connection)
     create_expenses_table(connection)
+
 
 if __name__ == "__main__":
     initialize_database()

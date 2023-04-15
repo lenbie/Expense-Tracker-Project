@@ -1,9 +1,8 @@
 from datetime import date
-from entities.category import Category
 
 class Expense:
     """"
-    
+
     Class representing an Expense entered into the Expense tracker
 
     Attributes:
@@ -13,8 +12,9 @@ class Expense:
         category: The category of the expense, default being undefined
 
     """
-    def __init__(self, name = str, amount = float, date= date.today(), category = "undefined"):
+
+    def __init__(self, name=str, amount=float, date=date.today(), category="undefined"):
         self.name = name
         self.amount = amount
-        self.date = date
+        self.date= date
         self.category = category
