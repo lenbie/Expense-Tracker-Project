@@ -35,6 +35,20 @@ class UserRepository:
         found = cursor.fetchone()
 
         return found
+    
+    def delete_user(self, username):
+
+        cursor = self._connection.cursor()
+
+        cursor.execute("""
+            delete from
+                users
+            where
+                username=:c""",
+                    {"c": username}
+                    )
+
+        self._connection.commit()
 
     def delete_all_users(self):
 
@@ -43,6 +57,8 @@ class UserRepository:
         cursor.execute("""
         delete from users;
         """)
+
+        self._connection.commit()
 
     def find_all_users(self):
 

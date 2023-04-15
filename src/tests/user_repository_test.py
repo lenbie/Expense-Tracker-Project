@@ -31,12 +31,14 @@ class TestUserRepository(unittest.TestCase):
 
         self.assertEqual(found["password"], self.test_user.password)
 
-    def test_find_user_returns_False_if_not_added(self):
+    def test_find_user_returns_None_if_not_added(self):
         found = test_repository.find_user(self.test_user.username)
 
         self.assertEqual(found, None)
 
     def test_delete_all_users(self):
+        test_repository.delete_all_users()
+
         found = test_repository.find_all_users()
 
         self.assertEqual(len(found), 0)
@@ -49,3 +51,13 @@ class TestUserRepository(unittest.TestCase):
         found = test_repository.find_all_users()
 
         self.assertEqual(len(found), 2)
+    
+    def test_delete_user(self):
+        test_repository.add_user(self.test_user)
+
+        test_repository.delete_user("mark")
+
+        found=test_repository.find_user("mark")
+
+        self.assertEqual(found, None)
+        

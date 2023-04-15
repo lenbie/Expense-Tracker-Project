@@ -18,7 +18,8 @@ def create_expenses_table(connection):
     cursor = connection.cursor()
     cursor.execute("""
         create table if not exists expenses (
-            username text primary key,
+            id integer primary key,
+            username text,
             name text,
             amount real,
             date text,
