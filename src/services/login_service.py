@@ -2,6 +2,7 @@ from entities.user import User
 
 from repositories.user_repository import UserRepository
 
+
 class LoginService:
     def __init__(self, user_repository=UserRepository):
         self.user_repository = user_repository
@@ -59,15 +60,15 @@ class LoginService:
             return True
 
         raise Exception("Invalid credentials")
-        #return False instead and then do exception in login user?
+        # return False instead and then do exception in login user?
 
     def login_user(self, username, password):
         valid = self.validate_credentials(username, password)
 
         if valid:
             self.logged_in_user = User(username, password)
-    
-        return self.logged_in_user 
-    
-    def logout_user(self, User):
+
+        return self.logged_in_user
+
+    def logout_user(self):
         self.logged_in_user = None

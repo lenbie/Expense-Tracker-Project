@@ -1,5 +1,6 @@
 from datetime import date
 
+
 class Expense:
     """"
 
@@ -13,8 +14,8 @@ class Expense:
 
     """
 
-    def __init__(self, name=str, amount=float, date=date.today(), category="undefined"):
+    def __init__(self, name=str, amount=float, given_date=date.today(), category="undefined"):
         self.name = name
         self.amount = amount
-        self.date= date
+        self.date = given_date
         self.category = category

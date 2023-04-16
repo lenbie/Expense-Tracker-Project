@@ -51,13 +51,12 @@ class TestUserRepository(unittest.TestCase):
         found = test_repository.find_all_users()
 
         self.assertEqual(len(found), 2)
-    
+
     def test_delete_user(self):
         test_repository.add_user(self.test_user)
 
         test_repository.delete_user("mark")
 
-        found=test_repository.find_user("mark")
+        found = test_repository.find_user("mark")
 
         self.assertEqual(found, None)
-        
