@@ -61,3 +61,11 @@ Create the html test coverage report using:
 ```bash
 poetry run invoke coverage-report
 ```
+
+### Pylint tests
+
+Create the pylint test report using:
+
+```bash
+poetry run invoke lint
+```
