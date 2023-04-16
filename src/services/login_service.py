@@ -60,7 +60,6 @@ class LoginService:
             return True
 
         raise Exception("Invalid credentials")
-        # return False instead and then do exception in login user?
 
     def login_user(self, username, password):
         valid = self.validate_credentials(username, password)

@@ -181,11 +181,3 @@ class ExpenseService:
             list_of_categories.add(expense["category"])
 
         return list_of_categories
-
-    # def graph_all_expenses(self):
-
-    # def graph_all_expenses_by_category(self):
-
-# there needs to be a function for ensuring user input is in correct format,
-# e.g. date is YYYY-MM-DD and a valid/reasonable date, amount is non negative etc.
-# --> use at beginning of all other functions? or call separately, idk
