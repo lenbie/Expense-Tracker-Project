@@ -51,7 +51,8 @@ class LoginService:
                 self.user_repository.add_user(new_user)
 
         else:
-            raise UsernameNotUniqueError("User with this username exists already")
+            raise UsernameNotUniqueError(
+                "User with this username exists already")
 
     def validate_credentials(self, username, password):
         found = self.user_repository.find_user(username)
@@ -68,20 +69,24 @@ class LoginService:
             self.logged_in_user = User(username, password)
 
         return self.logged_in_user
-    
+
     def find_logged_in_user(self):
         return self.logged_in_user
 
     def logout_user(self):
         self.logged_in_user = None
 
+
 class UsernameNotUniqueError(Exception):
     pass
+
 
 class InvalidCredentialsError(Exception):
     pass
 
+
 class IncorrectPasswordFormatError(Exception):
     pass
+
 
 login_service = LoginService(UserRepository())

@@ -4,6 +4,7 @@ from entities.user import User
 from entities.expense import Expense
 from entities.category import Category
 
+
 class ExpenseService:
 
     """
@@ -26,6 +27,22 @@ class ExpenseService:
                               expense_date, expense_category)
 
         self.expense_repository.add_expense(self.current_user, new_expense)
+
+    def check_input_validity_expense_amount(self, amount):
+        try:
+            amount = float(amount)
+        except ValueError as exc:
+            raise InvalidInputError(
+                """Invalid input. Make sure you have entered a nonnegative
+                numeric amount and a valid date in YYYY-MM-DD format""") from exc
+
+    def check_input_validity_expense_date(self, given_date):
+        try:
+            date.fromisoformat(given_date)
+        except ValueError as exc:
+            raise InvalidInputError(
+                """Invalid input. Make sure you have entered a nonnegative
+                numeric amount and a valid date in YYYY-MM-DD format""") from exc
 
     def edit_expense_name(self, new_expense_name, expense=Expense):
         found = self.expense_repository.find_expense(
@@ -175,9 +192,15 @@ class ExpenseService:
     def list_all_categories(self):
         all_expenses = self.expense_repository.get_all_expenses_by_user(
             self.current_user)
-        list_of_categories = set()
+        if all_expenses:
+            list_of_categories = set()
 
-        for expense in all_expenses:
-            list_of_categories.add(expense["category"])
+            for expense in all_expenses:
+                list_of_categories.add(expense["category"])
 
-        return list_of_categories
+            return list_of_categories
+        return []
+
+
+class InvalidInputError(Exception):
+    pass
