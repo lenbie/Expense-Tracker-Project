@@ -25,7 +25,7 @@ A possible extension to this is creating an administrative user role, with the a
       - For time, the user can input a time in format YYYY.MM.DD. or choose current time
   - [x] create a new category
     - [x] The user can define a new category by naming it.
-  - [x] *some of the functionality below has been implemented in the application logic, but not yet in the UI (viewing expenses in unordered list, editing categories and expenses, viewing expense totals*
+  - [x] *some of the functionality below has been implemented in the application logic, but not yet in the UI (viewing expenses in (unordered) list, editing and deleting categories and expenses, viewing expense totals)*
   -  view expenses
      -  The user can choose to view their expenses in a list, or create a graphical representation
      -  The list will have a "total" of all expenses at the top, and then show individual expenses in chronological order
