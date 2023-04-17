@@ -32,7 +32,7 @@ class LoginService:
         if len(password) >= 8 and include_number is True and include_special_char is True:
             return True
 
-        raise Exception("Incorrect password format")
+        raise IncorrectPasswordFormatError("Incorrect password format")
 
     def create_new_user(self, username, password):
 
@@ -51,7 +51,7 @@ class LoginService:
                 self.user_repository.add_user(new_user)
 
         else:
-            raise Exception("User with this username exists already")
+            raise UsernameNotUniqueError("User with this username exists already")
 
     def validate_credentials(self, username, password):
         found = self.user_repository.find_user(username)
@@ -59,7 +59,7 @@ class LoginService:
         if found is not None and found["password"] == password:
             return True
 
-        raise Exception("Invalid credentials")
+        raise InvalidCredentialsError("Invalid credentials")
 
     def login_user(self, username, password):
         valid = self.validate_credentials(username, password)
@@ -68,6 +68,20 @@ class LoginService:
             self.logged_in_user = User(username, password)
 
         return self.logged_in_user
+    
+    def find_logged_in_user(self):
+        return self.logged_in_user
 
     def logout_user(self):
         self.logged_in_user = None
+
+class UsernameNotUniqueError(Exception):
+    pass
+
+class InvalidCredentialsError(Exception):
+    pass
+
+class IncorrectPasswordFormatError(Exception):
+    pass
+
+login_service = LoginService(UserRepository())
