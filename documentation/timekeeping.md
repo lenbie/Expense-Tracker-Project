@@ -9,4 +9,5 @@
 |03.04.| 3 hours    | Updating the previously created classes and creating tests for UserRepository and ExpenseService. Also, adding tasks and preliminary main file|
 |15.04.| 4 hours   |Refactoring application services, code quality improvements with pylint, expanding and editing previously created classes and respective tests, creating ExpenseRepository and writing tests for it|
 |16.04.| 3 hours | Creating ExpenseService functionality in refactored service, writing tests for it, more pylint improvements |
-|Total| 18 hours   | |
+|17.04.| 5 hours | Creating the UI, improving upon some ExpenseService and LoginService functionality|
+|Total| 23 hours   | |
