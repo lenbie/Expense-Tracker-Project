@@ -35,7 +35,7 @@ A possible extension to this is creating an administrative user role, with the a
     - The user can view a list of the categories they created in chronological order and edit the category information, or delete categories. Deleting a category with expenses in it will move all those expenses to the predefined category "undefined".
   - edit their previously created expenses
     - When viewing the list of expenses, the user can then choose an "edit" option and then edit the expense information of any of the expenses, and for example change the name or the category they belong to. This enables users to put old expenses into newly created categories.
-- [×] When the user wishes to exit the application, they can log out of their account.
+- [x] When the user wishes to exit the application, they can log out of their account.
 
 ###   Further development ideas	
 
