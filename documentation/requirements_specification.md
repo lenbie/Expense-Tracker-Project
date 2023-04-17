@@ -14,14 +14,14 @@ A possible extension to this is creating an administrative user role, with the a
 
 ###   Basic Functionalities
 
-- [X] When starting the application, a user will first see the login page asking for their credentials - username and password - and the option to create a new account
-  - If they choose to create a new account, they can set a unique username, which must consist of at least 5 characters, and password, which must be at least 8 characters long and contain at least one integer number 
-  - If they enter invalid credentials, the application will prompt them to enter different credentials or create a new account
-  - If they enter valid credentials, they can then access their expense tracker account
+- [x] When starting the application, a user will first see the login page asking for their credentials - username and password - and the option to create a new account
+  - [x] If they choose to create a new account, they can set a unique username, which must consist of at least 5 characters, and password, which must be at least 8 characters long and contain at least one integer number 
+  - [x] If they enter invalid credentials, the application will prompt them to enter different credentials or create a new account
+  - [x] If they enter valid credentials, they can then access their expense tracker account
 - When a user has accessed their expense tracker account, they can
-  - create a new expense
-    - This requires the following information: Name (string), Amount (float), Category, Date
-      - For category, the user can choose he option of creating a new category, or one of their previously created categories (see below), or if no category is chosen, it will be the default "undefined".
+  - [x] create a new expense
+    - [x] This requires the following information: Name (string), Amount (float), and optionally Category, Date
+      - [x] For category, the user can choose he option of creating a new category, or one of their previously created categories (see below), or if no category is chosen, it will be the default "undefined".
       - For time, the user can input a time in format YYYY.MM.DD. or choose current time
   - create a new category
     - The user can define a new category by naming it.
