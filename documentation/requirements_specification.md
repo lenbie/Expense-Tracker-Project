@@ -23,8 +23,8 @@ A possible extension to this is creating an administrative user role, with the a
     - [x] This requires the following information: Name (string), Amount (float), and optionally Category, Date
       - [x] For category, the user can choose he option of creating a new category, or one of their previously created categories (see below), or if no category is chosen, it will be the default "undefined".
       - For time, the user can input a time in format YYYY.MM.DD. or choose current time
-  - create a new category
-    - The user can define a new category by naming it.
+  - [x] create a new category
+    - [x] The user can define a new category by naming it.
   -  view expenses
      -  The user can choose to view their expenses in a list, or create a graphical representation
      -  The list will have a "total" of all expenses at the top, and then show individual expenses in chronological order
