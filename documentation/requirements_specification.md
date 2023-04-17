@@ -14,7 +14,7 @@ A possible extension to this is creating an administrative user role, with the a
 
 ###   Basic Functionalities
 
-- When starting the application, a user will first see the login page asking for their credentials - username and password - and the option to create a new account 
+([X]) When starting the application, a user will first see the login page asking for their credentials - username and password - and the option to create a new account 
   - If they choose to create a new account, they can set a unique username, which must consist of at least 5 characters, and password, which must be at least 8 characters long and contain at least one integer number 
   - If they enter invalid credentials, the application will prompt them to enter different credentials or create a new account
   - If they enter valid credentials, they can then access their expense tracker account
