@@ -1,9 +1,13 @@
 from tkinter import Tk
 from ui.ui import UI
 
-window = Tk()
-window.title("Expense Tracker")
+def main():
+    window = Tk()
+    window.title("Expense Tracker")
 
-ui = UI(window)
-ui.start()
-window.mainloop()
+    ui = UI(window)
+    ui.start()
+    window.mainloop()
+
+if __name__ == "__main__":
+    main()

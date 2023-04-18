@@ -73,6 +73,9 @@ class ExpenseTrackerView:
             master=self._frame, text="Date (YYYY-MM-DD)", background="#AFE4DE")
         self._expense_date = ttk.Entry(master=self._frame)
 
+        expense_category_label = ttk.Label(
+            master=self._frame, text="Create new category (default) or choose category", background="#AFE4DE")
+        
         create_expense_button = ttk.Button(
             master=self._frame, text="Create new expense", command=self._handle_create_new_expense)
 
@@ -89,14 +92,14 @@ class ExpenseTrackerView:
         self._expense_date.grid(row=6, column=1, sticky=(
             constants.E, constants.W), padx=5, pady=5)
 
+        expense_category_label.grid(padx=5, pady=5)
         self._add_expense_category()
 
         create_expense_button.grid(column=1, columnspan=2, sticky=(
             constants.E, constants.W), padx=5, pady=5)
 
     def _add_expense_category(self):
-        expense_category_label = ttk.Label(
-            master=self._frame, text="Create new category (default) or choose category", background="#AFE4DE")
+       
         self._expense_category = ttk.Entry(master=self._frame)
 
         self._selected_category = StringVar()
@@ -109,7 +112,6 @@ class ExpenseTrackerView:
             expense_category_dropdown = OptionMenu(
                 self._frame, self._selected_category, *category_options)
 
-        expense_category_label.grid(padx=5, pady=5)
         self._expense_category.grid(row=7, column=1, sticky=(
             constants.E, constants.W), padx=5, pady=5)
         expense_category_dropdown.grid(row=8, column=1, sticky=(
@@ -140,6 +142,7 @@ class ExpenseTrackerView:
                 self._expense_date.delete(0, constants.END)
                 self._expense_category.delete(0, constants.END)
                 self._selected_category.set("undefined")
+                self._add_expense_category()
 
             except InvalidInputError:
                 self._display_error_message(
