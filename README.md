@@ -16,6 +16,8 @@ The [requirements specification](https://github.com/lenbie/ot-harjoitustyo/blob/
 
 The [changelog](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/changelog.md) document contains details on what changes were made to the project during each week of the course, starting from week 3.
 
+The [architecture description](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/architecture.md) of the application contains information and diagrams on the application's architecture and structure.
+
 ## Installation
 
 1. Install dependencies through command line using:
