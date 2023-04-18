@@ -5,8 +5,8 @@ def main():
     window = Tk()
     window.title("Expense Tracker")
 
-    ui = UI(window)
-    ui.start()
+    user_interface = UI(window)
+    user_interface.start()
     window.mainloop()
 
 if __name__ == "__main__":
