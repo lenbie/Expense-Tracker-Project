@@ -2,4 +2,6 @@
 
 ## Structure
 
-The structure of the program represented as a package diagram:
+The structure of the application represented as a package diagram:
+
+![Packaging diagram of the application's structure](./images/class_diagram.png)
