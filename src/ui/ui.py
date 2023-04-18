@@ -38,7 +38,7 @@ class UI:
         self._hide_current_view()
 
         self._current_view = CreateAccountView(
-            self._root, self._handle_expense_tracker, self._handle_login)
+            self._root, self._handle_login)
         self._current_view.configure()
 
     def _show_expense_tracker_view(self):

@@ -299,6 +299,6 @@ class TestExpenseService(unittest.TestCase):
             "pizza", 15.6, self.test_expense.date, "takeaway")
 
         list_of_categories = self.test_expense_service.list_all_categories()
-        expected_list = {self.test_expense.category, "takeaway"}
+        expected_list = [self.test_expense.category, "takeaway"]
 
         self.assertEqual(list_of_categories, expected_list)

@@ -66,13 +66,14 @@ class LoginView:
         username_value = self._username_entry.get()
         password_value = self._password_entry.get()
 
-        try:
-            login_service.login_user(username_value, password_value)
-            self._handle_start_expense_tracker()
+        if username_value and password_value:
+            try:
+                login_service.login_user(username_value, password_value)
+                self._handle_start_expense_tracker()
 
-        except InvalidCredentialsError:
-            self._display_error_message(
-                "Invalid credentials. Please try again")
+            except InvalidCredentialsError:
+                self._display_error_message(
+                    "Invalid credentials. Please try again")
 
     def _display_error_message(self, message):
         messagebox.showerror("Error", message)

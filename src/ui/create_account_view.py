@@ -3,9 +3,9 @@ from services.login_service import login_service, UsernameNotUniqueError, Incorr
 
 
 class CreateAccountView:
-    def __init__(self, root, handle_expense_tracker, handle_login):
+    def __init__(self, root, handle_login):
         self._root = root
-        self._handle_expense_tracker = handle_expense_tracker
+        # self._handle_start_expense_tracker = handle_expense_tracker
         self._handle_login = handle_login
         self._frame = None
         self._style = None
@@ -35,7 +35,7 @@ class CreateAccountView:
             master=self._frame, text="""Your password must be at least 8 characters long and contain at least 1 number and 1 special character""", background="#AFE4DE")
 
         create_account_and_continue_button = ttk.Button(
-            master=self._frame, text="Create account and continue to expense tracker", command=self._handle_create_account_and_login_button_click)
+            master=self._frame, text="Create account and continue to login", command=self._handle_create_account_and_continue_to_login_button_click)
         return_to_login_button = ttk.Button(
             master=self._frame, text="Return to Login", command=self._handle_login)
 
@@ -66,20 +66,20 @@ class CreateAccountView:
     def destroy(self):
         self._frame.destroy()
 
-    def _handle_create_account_and_login_button_click(self):
+    def _handle_create_account_and_continue_to_login_button_click(self):
         username_value = self._username_entry.get()
         password_value = self._password_entry.get()
 
-        try:
-            login_service.create_new_user(username_value, password_value)
-            self._handle_expense_tracker()
+        if username_value and password_value:
+            try:
+                login_service.create_new_user(username_value, password_value)
+                self._handle_login()
+            except IncorrectPasswordFormatError:
+                self._display_error_message("Incorrect password format")
 
-        except IncorrectPasswordFormatError:
-            self._display_error_message("Incorrect password format")
-
-        except UsernameNotUniqueError:
-            self._display_error_message(
-                "User with this username exists already")
+            except UsernameNotUniqueError:
+                self._display_error_message(
+                    "User with this username exists already")
 
     def _display_error_message(self, message):
         messagebox.showerror("Error", message)

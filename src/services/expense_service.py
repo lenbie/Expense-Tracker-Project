@@ -36,6 +36,10 @@ class ExpenseService:
                 """Invalid input. Make sure you have entered a nonnegative
                 numeric amount and a valid date in YYYY-MM-DD format""") from exc
 
+        if amount < 0:
+            raise InvalidInputError("""Invalid input. Make sure you have entered a nonnegative
+                numeric amount and a valid date in YYYY-MM-DD format""")
+
     def check_input_validity_expense_date(self, given_date):
         try:
             date.fromisoformat(given_date)
@@ -193,10 +197,14 @@ class ExpenseService:
         all_expenses = self.expense_repository.get_all_expenses_by_user(
             self.current_user)
         if all_expenses:
-            list_of_categories = set()
+            set_of_categories = set()
+            list_of_categories = []
 
             for expense in all_expenses:
-                list_of_categories.add(expense["category"])
+                set_of_categories.add(expense["category"])
+
+            for category in set_of_categories:
+                list_of_categories.append(category)
 
             return list_of_categories
         return []

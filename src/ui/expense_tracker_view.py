@@ -103,7 +103,7 @@ class ExpenseTrackerView:
         self._selected_category.set("undefined")
 
         category_options = self.expense_service.list_all_categories()
-        category_options.add("undefined")
+        category_options.append("undefined")
 
         if category_options:
             expense_category_dropdown = OptionMenu(
@@ -128,8 +128,9 @@ class ExpenseTrackerView:
             try:
                 self.expense_service.check_input_validity_expense_amount(
                     expense_amount)
-                self.expense_service.check_input_validity_expense_date(
-                    expense_date)
+                if expense_date:
+                    self.expense_service.check_input_validity_expense_date(
+                        expense_date)
 
                 self.expense_service.create_new_expense(
                     expense_name, expense_amount, expense_date, expense_category)
