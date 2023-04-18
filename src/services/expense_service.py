@@ -206,6 +206,8 @@ class ExpenseService:
             for category in set_of_categories:
                 list_of_categories.append(category)
 
+            list_of_categories.sort()
+
             return list_of_categories
         return []
 
