@@ -109,9 +109,11 @@ class ExpenseRepository:
         from 
             expenses
         where
-           username=:c""",
-                       {"c": user.username}
-                       )
+           username=:c
+        order by
+            date desc""",
+                    {"c": user.username}
+                    )
         found = cursor.fetchall()
 
         return found
@@ -131,6 +133,8 @@ class ExpenseRepository:
            username=?
         and
             category=?
+        order by
+            date desc
         """
 
         cursor.execute(find_all, (user.username, category.name))

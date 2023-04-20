@@ -1,4 +1,4 @@
-from tkinter import ttk, constants, OptionMenu, StringVar, messagebox, Entry, END
+from tkinter import ttk, constants, OptionMenu, StringVar, messagebox, END
 from services.login_service import login_service
 from repositories.expense_repository import ExpenseRepository
 from services.expense_service import ExpenseService, InvalidInputError
@@ -45,9 +45,6 @@ class ExpenseTrackerView:
         header_label = ttk.Label(
             master=self._frame, text="Your Expense Tracker", background="#AFE4DE")
 
-        # create_expense_label = ttk.Label(
-        # master=self._frame, text="Further functionality is present in application logic but not yet accessible via the UI", background="#AFE4DE")
-
         logout_button = ttk.Button(
             master=self._frame, text="Logout", command=self._handle_logout)
 
@@ -55,9 +52,6 @@ class ExpenseTrackerView:
             constants.E), padx=5, pady=5)
         header_label.grid(row=0, columnspan=2, sticky=(
             constants.N), padx=5, pady=5)
-
-        # create_expense_label.grid(
-        # columnspan=2, sticky=(constants.N), padx=5, pady=5)
 
     def _initialize_create_expense_view(self):
         header_label = ttk.Label(
@@ -97,7 +91,7 @@ class ExpenseTrackerView:
         expense_category_label.grid(padx=5, pady=5)
         self._add_expense_category()
 
-        create_expense_button.grid(column=1, columnspan=2, sticky=(
+        create_expense_button.grid(column=1, sticky=(
             constants.E, constants.W), padx=5, pady=5)
 
     def _add_expense_category(self):
@@ -168,14 +162,15 @@ class ExpenseTrackerView:
         display_total.grid(padx=5, pady=5)
 
     def _initialize_view_expense_table(self):
-        list_view_label = ttk.Label(
-            master=self._frame, text="View expenses as Table", borderwidth=5, relief="sunken")
+        table_view_lall_label = ttk.Label(
+            master=self._frame, text="View all expenses as table", borderwidth=5, relief="sunken")
+        table_view_by_category_button = ttk.Button(master=self._frame, text="View expenses by category as table")
         graph_view_button = ttk.Button(
             master=self._frame, text="View expenses as graph")
-
-        list_view_label.grid(row=12, padx=5, pady=5)
-        graph_view_button.grid(row=12, column=1, columnspan=2, sticky=(
-            constants.E, constants.W), padx=5, pady=5)
+    
+        table_view_lall_label.grid(row=12, padx=5, pady=5)
+        table_view_by_category_button.grid(row=12, column=1, padx=5, pady=5)
+        graph_view_button.grid(row=12, column = 2, padx=5, pady=5, sticky=(constants.E))
 
         self._get_expense_table()
 
@@ -184,9 +179,14 @@ class ExpenseTrackerView:
         if expense_list:
             for list_row in range(len(expense_list)):
                 for list_column in range(len(expense_list[0])):
-                    entry = Entry(master=self._frame)
+                    entry = ttk.Entry(master=self._frame)
                     entry.grid(row=13+list_row, column=list_column, sticky=(constants.NSEW))
                     entry.insert(END, expense_list[list_row][list_column])
+                edit_buttons=ttk.Button(master=self._frame, text="Edit this expense")
+                edit_buttons.grid(row=13+list_row, column=5)
         else:
-            label=ttk.Label(master=self._frame, text="You have not entered any expenses yet")
+            label=ttk.Label(master=self._frame, text="You have not entered any expenses yet", background="white")
             label.grid(padx=5, pady=5)
+
+# could instead create classes for : view expenses total, view by category and view graph --> connect to "Edit expense somehow"
+# then by buttons these are selected and frames are created or destroyed and then embedded in create expense frame
