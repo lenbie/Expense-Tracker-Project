@@ -1,3 +1,4 @@
+import pandas as pd
 from database_connection import connect_to_database
 from entities.user import User
 from entities.expense import Expense
@@ -19,7 +20,7 @@ class ExpenseRepository:
                 date,
                 category)
             values (?, ?, ?, ?, ?)""",
-            (user.username, expense.name, expense.amount, expense.date, expense.category))
+                       (user.username, expense.name, expense.amount, expense.date, expense.category))
 
         self._connection.commit()
 
@@ -136,3 +137,8 @@ class ExpenseRepository:
         found = cursor.fetchall()
 
         return found
+
+    def get_all_expenses_as_pandas_dataframe(self):
+        dataframe = pd.read_sql_query(
+            "SELECT username, name, amount, date, category from expenses", self._connection)
+        return dataframe

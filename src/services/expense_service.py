@@ -1,4 +1,5 @@
 from datetime import date
+import pandas
 from repositories.expense_repository import ExpenseRepository
 from entities.user import User
 from entities.expense import Expense
@@ -20,7 +21,10 @@ class ExpenseService:
     def create_new_expense(self, name, amount, given_date=date.today(), category="undefined"):
         expense_name = str(name)
         expense_amount = float(amount)
-        expense_date = str(given_date)
+        if not given_date:
+            expense_date = str(date.today())
+        else:
+            expense_date = str(given_date)
         expense_category = str(category)
 
         new_expense = Expense(expense_name, expense_amount,
@@ -175,8 +179,7 @@ class ExpenseService:
         list_of_expenses = []
 
         for expense in all_expenses:
-            listed_expense = Expense(
-                expense["name"], expense["amount"], expense["date"], expense["category"])
+            listed_expense = [expense["name"], expense["amount"], expense["date"], expense["category"]]
             list_of_expenses.append(listed_expense)
 
         return list_of_expenses
@@ -187,8 +190,7 @@ class ExpenseService:
         list_of_expenses = []
 
         for expense in all_expenses:
-            listed_expense = Expense(
-                expense["name"], expense["amount"], expense["date"], expense["category"])
+            listed_expense = [expense["name"], expense["amount"], expense["date"], expense["category"]]
             list_of_expenses.append(listed_expense)
 
         return list_of_expenses
@@ -210,6 +212,12 @@ class ExpenseService:
 
             return list_of_categories
         return []
+
+
+    def get_expense_graph(self):
+        all_expenses = self.expense_repository.get_all_expenses_as_pandas_dataframe()
+        #if all_expenses:
+
 
 
 class InvalidInputError(Exception):
