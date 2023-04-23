@@ -33,7 +33,7 @@ A possible extension to this is creating an administrative user role, with the a
        -  The user can choose whether they would like to see how the total expenses have changed over time, or if they would like to see how the expenses of a certain category have changed over time
   - edit their previously created categories
     - The user can view a list of the categories they created in chronological order and edit the category information, or delete categories. Deleting a category with expenses in it will move all those expenses to the predefined category "undefined".
-  - edit their previously created expenses
+  - [x] edit their previously created expenses
     - When viewing the list of expenses, the user can then choose an "edit" option and then edit the expense information of any of the expenses, and for example change the name or the category they belong to. This enables users to put old expenses into newly created categories.
 - [x] When the user wishes to exit the application, they can log out of their account.
 

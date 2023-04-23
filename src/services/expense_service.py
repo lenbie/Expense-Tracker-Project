@@ -26,7 +26,6 @@ class ExpenseService:
         else:
             expense_date = str(given_date)
         expense_category = str(category)
-
         new_expense = Expense(expense_name, expense_amount,
                               expense_date, expense_category)
 
@@ -71,6 +70,8 @@ class ExpenseService:
         found = self.expense_repository.find_expense(
             self.current_user, expense)
         if found:
+            self.check_input_validity_expense_amount(new_expense_amount)
+
             old_expense = Expense(
                 found["name"], found["amount"], found["date"], found["category"])
             self.expense_repository.delete_expense(
@@ -101,6 +102,7 @@ class ExpenseService:
         found = self.expense_repository.find_expense(
             self.current_user, expense)
         if found:
+            self.check_input_validity_expense_date(new_expense_date)
             old_expense = Expense(
                 found["name"], found["amount"], found["date"], found["category"])
             self.expense_repository.delete_expense(

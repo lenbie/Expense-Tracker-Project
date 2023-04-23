@@ -1,7 +1,7 @@
 from tkinter import ttk, constants, OptionMenu, StringVar, messagebox, END, VERTICAL
 from services.login_service import login_service
 from repositories.expense_repository import ExpenseRepository
-from services.expense_service import ExpenseService
+from services.expense_service import ExpenseService, InvalidInputError
 from entities.category import Category
 from entities.expense import Expense
 
@@ -179,17 +179,31 @@ class ExpenseOverview:
 
             if editable == "Delete":
                     self.expense_service.delete_expense(old_expense)
-                    
+
             user_change = self._user_change_input.get()
+
             if user_change:
                 if editable == "Name":
                     self.expense_service.edit_expense_name(user_change, old_expense)
+
                 elif editable == "Amount":
-                    self.expense_service.edit_expense_amount(user_change, old_expense)
+                    try:
+                        self.expense_service.edit_expense_amount(user_change, old_expense)
+                    except InvalidInputError:
+                        self._display_error_message("Invalid input. Make sure you have entered a nonnegative numeric amount")
+
                 elif editable =="Date":
-                    self.expense_service.edit_expense_date(user_change, old_expense)
+                    try:
+                        self.expense_service.edit_expense_date(user_change, old_expense)
+                    except InvalidInputError:
+                        self._display_error_message("Invalid input. Make sure you have entered a valid date in YYYY-MM-DD format")
+
                 elif editable =="Category":
                     self.expense_service.edit_expense_category(user_change, old_expense)
+                    
             
             self._user_change_input.delete(0, constants.END)
             self._get_expense_table()
+        
+    def _display_error_message(self, message):
+        messagebox.showerror("Error", message)

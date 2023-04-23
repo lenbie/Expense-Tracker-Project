@@ -64,17 +64,3 @@ class ExpenseTrackerView:
             constants.N), padx=5, pady=5)
         expense_overview_button.grid(row=1, column=0, padx=5, pady=5)
         create_expenses_button.grid(row=2, column=0, padx=5, pady=5)
-        
-
-#TODAY
-#add check validity of input in expense service and error messages in UI
-
-#BEFORE DDL
-#general edits (test, pylint), manual UI checks!
-#other week 5 homework
-
-#NEXT WEEK:
-#add edit and delete category to UI
-#make graphing function in Exp.Services
-#make UI for that
-#figure out how to revert UI view more often
