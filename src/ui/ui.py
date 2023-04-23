@@ -3,6 +3,8 @@ from ui.login_view import LoginView
 from ui.create_account_view import CreateAccountView
 from ui.expense_tracker_view import ExpenseTrackerView
 from ui.expense_graph_view import ExpenseGraph
+from ui.expense_creation_view import ExpenseCreationView
+from ui.expense_overview import ExpenseOverview
 
 
 class UI:
@@ -28,11 +30,27 @@ class UI:
     def _handle_expense_tracker(self):
         self._show_expense_tracker_view()
 
+    def _handle_expense_overview(self):
+        self._show_expense_overview()
+
+    def _handle_expense_creation(self):
+        self._show_expense_creation_view()
+
+    def _handle_expense_graph(self):
+        self._show_expense_graph_view()
+
     def _show_login_view(self):
         self._hide_current_view()
 
         self._current_view = LoginView(
             self._root, self._handle_create_account, self._handle_expense_tracker)
+        self._current_view.configure()
+
+    def _show_expense_overview(self):
+        self._hide_current_view()
+
+        self._current_view = ExpenseOverview(
+            self._root, self._handle_expense_tracker, self._handle_expense_graph)
         self._current_view.configure()
 
     def _show_create_account_view(self):
@@ -45,12 +63,15 @@ class UI:
     def _show_expense_tracker_view(self):
         self._hide_current_view()
 
-        self._current_view = ExpenseTrackerView(self._root, self._handle_login, self._handle_expense_graph)
+        self._current_view = ExpenseTrackerView(self._root, self._handle_login, self._handle_expense_overview, self._handle_expense_creation)
+        self._current_view.configure()
+    
+    def _show_expense_creation_view(self):
+        self._hide_current_view()
+        
+        self._current_view = ExpenseCreationView(self._root, self._handle_expense_tracker)
         self._current_view.configure()
 
-    def _handle_expense_graph(self):
-        self._show_expense_graph_view()
-    
     def _show_expense_graph_view(self):
         self._hide_current_view()
 
