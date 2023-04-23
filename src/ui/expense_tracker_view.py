@@ -1,13 +1,17 @@
-from tkinter import ttk, constants, OptionMenu, StringVar, messagebox, END
+from tkinter import ttk, constants, OptionMenu, StringVar, messagebox, END, VERTICAL
+from tkinter.messagebox import showinfo
 from services.login_service import login_service
 from repositories.expense_repository import ExpenseRepository
 from services.expense_service import ExpenseService, InvalidInputError
-
+from entities.category import Category
+from entities.expense import Expense
 
 class ExpenseTrackerView:
-    def __init__(self, root, handle_login):
+    def __init__(self, root, handle_login, expense_graph):
         self._root = root
         self._handle_return_to_login = handle_login
+        self._expense_graph_view = expense_graph
+
         self._frame = None
         self._style = None
 
@@ -19,6 +23,10 @@ class ExpenseTrackerView:
         self._expense_date = None
         self._expense_category = None
         self._selected_category = None
+        self._selected_table_category = None
+        self._expense_table = None
+        self._selected_editable = None
+        self._user_change = None
 
         self._initialize()
 
@@ -39,7 +47,7 @@ class ExpenseTrackerView:
         self._initialize_start_view()
         self._initialize_create_expense_view()
         self._initialize_view_expense_total()
-        self._initialize_view_expense_table()
+        self._initialize_view_expense_tables()
 
     def _initialize_start_view(self):
         header_label = ttk.Label(
@@ -95,7 +103,6 @@ class ExpenseTrackerView:
             constants.E, constants.W), padx=5, pady=5)
 
     def _add_expense_category(self):
-
         self._expense_category = ttk.Entry(master=self._frame)
 
         self._selected_category = StringVar()
@@ -161,32 +168,130 @@ class ExpenseTrackerView:
         header_label.grid(padx=5, pady=5,  sticky=(constants.W))
         display_total.grid(padx=5, pady=5)
 
-    def _initialize_view_expense_table(self):
-        table_view_lall_label = ttk.Label(
-            master=self._frame, text="View all expenses as table", borderwidth=5, relief="sunken")
-        table_view_by_category_button = ttk.Button(master=self._frame, text="View expenses by category as table")
+    def _initialize_view_expense_tables(self):
+        table_view_all_button = ttk.Button(
+            master=self._frame, text="View all expenses as table", command=self._get_expense_table)
+        table_view_by_category_button = ttk.Button(master=self._frame, text="View expenses by category as table", command=self._get_expense_category_table)
         graph_view_button = ttk.Button(
-            master=self._frame, text="View expenses as graph")
+            master=self._frame, text="View expenses as graph", command=self._expense_graph_view)
     
-        table_view_lall_label.grid(row=12, padx=5, pady=5)
+        table_view_all_button.grid(row=12, padx=5, pady=5)
         table_view_by_category_button.grid(row=12, column=1, padx=5, pady=5)
-        graph_view_button.grid(row=12, column = 2, padx=5, pady=5, sticky=(constants.E))
+        graph_view_button.grid(row=12, column=3, padx=10, pady=10)
 
         self._get_expense_table()
+        self._get_category()
+        self._initialize_edit_expenses()
 
     def _get_expense_table(self):
-        expense_list = self.expense_service.list_all_expenses()
-        if expense_list:
-            for list_row in range(len(expense_list)):
-                for list_column in range(len(expense_list[0])):
-                    entry = ttk.Entry(master=self._frame)
-                    entry.grid(row=13+list_row, column=list_column, sticky=(constants.NSEW))
-                    entry.insert(END, expense_list[list_row][list_column])
-                edit_buttons=ttk.Button(master=self._frame, text="Edit this expense")
-                edit_buttons.grid(row=13+list_row, column=5)
-        else:
-            label=ttk.Label(master=self._frame, text="You have not entered any expenses yet", background="white")
-            label.grid(padx=5, pady=5)
+        if self._expense_table:
+            self._delete_table()
 
-# could instead create classes for : view expenses total, view by category and view graph --> connect to "Edit expense somehow"
-# then by buttons these are selected and frames are created or destroyed and then embedded in create expense frame
+        expense_list = self.expense_service.list_all_expenses()
+
+        if expense_list:
+            column_names = ["Expense Name", "Amount", "Date", "Category"]
+            self._expense_table = ttk.Treeview(master=self._frame, columns=column_names, show ="headings", selectmode="browse")
+            self._style.configure("Treeview.Heading", background="#AFE4DE")
+            for column in column_names:
+                self._expense_table.heading(column, text=column)
+            for expense in expense_list:
+                self._expense_table.insert("", END, values=expense)
+            self._expense_table.grid(row=14, columnspan=2, sticky='NSEW', padx=5, pady=5)
+            self._insert_table_scrollbar(self._expense_table)
+        else:
+            note=ttk.Label(master=self._frame, text="You do not currently have any recorded expenses", background="#AFE4DE")
+            note.grid(row=14, padx=5, pady=5)
+    
+    def _get_expense_category_table(self):
+        if self._expense_table:
+            self._delete_table()
+
+        category=self._selected_table_category.get()
+
+        if category:
+            expense_list = self.expense_service.list_expenses_by_category(Category(category))
+            if expense_list:
+
+                column_names = ["Expense Name", "Amount", "Date", "Category"]
+                self._expense_table = ttk.Treeview(master=self._frame, columns=column_names, show ="headings", selectmode="browse")
+                self._style.configure("Treeview.Heading", background="#AFE4DE")
+
+                for column in column_names:
+                    self._expense_table.heading(column, text=column)
+                for expense in expense_list:
+                    self._expense_table.insert("", END, values=expense)
+                self._expense_table.grid(row=14, columnspan=2, sticky='NSEW', padx=5, pady=5)
+
+                self._insert_table_scrollbar(self._expense_table)
+
+            else:
+                note=ttk.Label(master=self._frame, text="You do not currently have any recorded expenses", background="#AFE4DE")
+                note.grid(row=14, padx=5, pady=5)
+
+    def _delete_table(self):
+        for element in self._expense_table.get_children():
+            self._expense_table.delete(element)
+    
+    def _insert_table_scrollbar(self, table):
+        scrollbar = ttk.Scrollbar(self._frame, orient=VERTICAL, command=table.yview)
+        table.configure(yscroll=scrollbar.set)
+        scrollbar.grid(row=14, column=2, sticky='NS')
+    
+    def _get_category(self):
+        self._selected_table_category = StringVar()
+        category_options = self.expense_service.list_all_categories()
+        if category_options:
+            expense_category_dropdown = OptionMenu(
+                self._frame, self._selected_table_category, *category_options)
+            expense_category_dropdown.grid(row=13, column=1, padx=5, pady=5)
+
+    def _initialize_edit_expenses(self):
+        edit_expense_label = ttk.Label(master=self._frame, text="Choose expense to edit by selecting it via click, choose expense aspect to edit in the dropdown and then fill in changed value in the text field.", background="white")
+        
+        self._selected_editable = StringVar()
+        edit_options = ["Name", "Amount", "Date", "Category"]
+        edit_expense_dropdown = OptionMenu(self._frame, self._selected_editable, *edit_options)
+
+        self._user_change_input = ttk.Entry(master=self._frame)
+        
+        edit_expense_label.grid(padx=5, pady=5)
+        edit_expense_dropdown.grid(padx=5, pady=5)
+        self._user_change_input.grid(sticky=(
+            constants.E, constants.W), padx=5, pady=5)
+
+        edit_expense_button = ttk.Button(master=self._frame, text="Edit Expense", command=self._edit_expenses)
+        edit_expense_button.grid(padx=5, pady=5)
+
+    def _edit_expenses(self):
+        editable=self._selected_editable.get()
+        chosen_expense = self._expense_table.focus()
+
+        if editable and chosen_expense:
+            chosen_expense_details = self._expense_table.item(chosen_expense)
+
+            old_expense = Expense(chosen_expense_details.get("values")[0], chosen_expense_details.get("values")[1],
+                                  chosen_expense_details.get("values")[2], chosen_expense_details.get("values")[3])
+
+            user_change = self._user_change_input.get()
+            if user_change:
+                if editable == "Name":
+                    self.expense_service.edit_expense_name(user_change, old_expense)
+                elif editable == "Amount":
+                    self.expense_service.edit_expense_amount(user_change, old_expense)
+                elif editable =="Date":
+                    self.expense_service.edit_expense_date(user_change, old_expense)
+                elif editable =="Category":
+                    self.expense_service.edit_expense_category(user_change, old_expense)
+            
+            self._user_change_input.delete(0, constants.END)
+            self._get_expense_table()
+
+#figure out "Edit expenses" --> add check validity of input in expense service and error messages in UI
+# refactor UI!!
+
+#make graphing function in Exp.Services
+#make UI for that
+#add category total to table view
+#revert view more often
+#add delete expense, add delete and edit category

@@ -2,6 +2,7 @@ from tkinter import Tk
 from ui.login_view import LoginView
 from ui.create_account_view import CreateAccountView
 from ui.expense_tracker_view import ExpenseTrackerView
+from ui.expense_graph_view import ExpenseGraph
 
 
 class UI:
@@ -44,5 +45,14 @@ class UI:
     def _show_expense_tracker_view(self):
         self._hide_current_view()
 
-        self._current_view = ExpenseTrackerView(self._root, self._handle_login)
+        self._current_view = ExpenseTrackerView(self._root, self._handle_login, self._handle_expense_graph)
+        self._current_view.configure()
+
+    def _handle_expense_graph(self):
+        self._show_expense_graph_view()
+    
+    def _show_expense_graph_view(self):
+        self._hide_current_view()
+
+        self._current_view = ExpenseGraph(self._root, self._handle_expense_tracker)
         self._current_view.configure()
