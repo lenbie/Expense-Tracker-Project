@@ -63,17 +63,20 @@ class UI:
     def _show_expense_tracker_view(self):
         self._hide_current_view()
 
-        self._current_view = ExpenseTrackerView(self._root, self._handle_login, self._handle_expense_overview, self._handle_expense_creation)
+        self._current_view = ExpenseTrackerView(
+            self._root, self._handle_login, self._handle_expense_overview, self._handle_expense_creation)
         self._current_view.configure()
-    
+
     def _show_expense_creation_view(self):
         self._hide_current_view()
-        
-        self._current_view = ExpenseCreationView(self._root, self._handle_expense_tracker)
+
+        self._current_view = ExpenseCreationView(
+            self._root, self._handle_expense_tracker)
         self._current_view.configure()
 
     def _show_expense_graph_view(self):
         self._hide_current_view()
 
-        self._current_view = ExpenseGraph(self._root, self._handle_expense_tracker)
+        self._current_view = ExpenseGraph(
+            self._root, self._handle_expense_tracker)
         self._current_view.configure()

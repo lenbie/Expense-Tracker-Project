@@ -3,6 +3,7 @@ from services.login_service import login_service
 from repositories.expense_repository import ExpenseRepository
 from services.expense_service import ExpenseService
 
+
 class ExpenseGraph:
     def __init__(self, root, expense_tracker_homescreen):
         self._root = root
@@ -36,11 +37,12 @@ class ExpenseGraph:
         self._style = ttk.Style()
         self._style.configure("TFrame", background="#AFE4DE")
 
-        header_label = ttk.Label(master=self._frame, text="Expense Graph", background="#AFE4DE")
-        return_to_homescreen=ttk.Button(master=self._frame, text="Return to Expense Tracker Homescreen", command=self._return_to_homescreen)
+        header_label = ttk.Label(
+            master=self._frame, text="Expense Graph", background="#AFE4DE")
+        return_to_homescreen = ttk.Button(
+            master=self._frame, text="Return to Expense Tracker Homescreen", command=self._return_to_homescreen)
 
         return_to_homescreen.grid(row=0, column=3, sticky=(
             constants.E), padx=5, pady=5)
         header_label.grid(row=0, columnspan=2, sticky=(
             constants.N), padx=5, pady=5)
-

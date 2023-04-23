@@ -48,15 +48,17 @@ class ExpenseTrackerView:
     def _handle_logout(self):
         login_service.logout_user()
         self._handle_return_to_login()
-    
+
     def _initialize_start_view(self):
         header_label = ttk.Label(
             master=self._frame, text="Welcome to your Expense Tracker", background="#AFE4DE")
         logout_button = ttk.Button(
             master=self._frame, text="Logout", command=self._handle_logout)
 
-        expense_overview_button =ttk.Button(master=self._frame, text="View and Edit Expenses", command=self._handle_expense_overview)
-        create_expenses_button = ttk.Button(master=self._frame, text="Create Expenses", command=self._handle_create_expense)
+        expense_overview_button = ttk.Button(
+            master=self._frame, text="View and Edit Expenses", command=self._handle_expense_overview)
+        create_expenses_button = ttk.Button(
+            master=self._frame, text="Create Expenses", command=self._handle_create_expense)
 
         logout_button.grid(row=0, column=3, sticky=(
             constants.E), padx=5, pady=5)

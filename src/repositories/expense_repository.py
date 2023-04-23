@@ -20,7 +20,7 @@ class ExpenseRepository:
                 date,
                 category)
             values (?, ?, ?, ?, ?)""",
-                       (user.username, expense.name, expense.amount, expense.date, expense.category))
+                (user.username, expense.name, expense.amount, expense.date, expense.category))
 
         self._connection.commit()
 
@@ -112,8 +112,8 @@ class ExpenseRepository:
            username=:c
         order by
             date desc""",
-                    {"c": user.username}
-                    )
+                       {"c": user.username}
+                       )
         found = cursor.fetchall()
 
         return found

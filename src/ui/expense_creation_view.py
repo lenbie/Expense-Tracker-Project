@@ -3,11 +3,12 @@ from services.login_service import login_service
 from repositories.expense_repository import ExpenseRepository
 from services.expense_service import ExpenseService, InvalidInputError
 
+
 class ExpenseCreationView:
     def __init__(self, root, handle_expense_tracker):
         self._root = root
         self._handle_return_to_homescreen = handle_expense_tracker
-        
+
         self._frame = None
         self._style = None
 
@@ -19,7 +20,7 @@ class ExpenseCreationView:
         self._expense_date = None
         self._expense_category = None
         self._selected_category = None
-       
+
         self._initialize()
 
     def configure(self):

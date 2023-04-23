@@ -1,5 +1,5 @@
 from datetime import date
-import pandas
+#import pandas
 from repositories.expense_repository import ExpenseRepository
 from entities.user import User
 from entities.expense import Expense
@@ -181,7 +181,8 @@ class ExpenseService:
         list_of_expenses = []
 
         for expense in all_expenses:
-            listed_expense = [expense["name"], expense["amount"], expense["date"], expense["category"]]
+            listed_expense = [expense["name"], expense["amount"],
+                              expense["date"], expense["category"]]
             list_of_expenses.append(listed_expense)
 
         return list_of_expenses
@@ -192,7 +193,8 @@ class ExpenseService:
         list_of_expenses = []
 
         for expense in all_expenses:
-            listed_expense = [expense["name"], expense["amount"], expense["date"], expense["category"]]
+            listed_expense = [expense["name"], expense["amount"],
+                              expense["date"], expense["category"]]
             list_of_expenses.append(listed_expense)
 
         return list_of_expenses
@@ -215,11 +217,9 @@ class ExpenseService:
             return list_of_categories
         return []
 
-
-    def get_expense_graph(self):
-        all_expenses = self.expense_repository.get_all_expenses_as_pandas_dataframe()
-        #if all_expenses:
-
+    #def get_expense_graph(self):
+        #all_expenses = self.expense_repository.get_all_expenses_as_pandas_dataframe()
+        # if all_expenses:
 
 
 class InvalidInputError(Exception):
