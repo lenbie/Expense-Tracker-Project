@@ -11,4 +11,6 @@
 |16.04.| 3 hours | Creating ExpenseService functionality in refactored service, writing tests for it, more pylint improvements |
 |17.04.| 5 hours | Creating the UI, improving upon some ExpenseService and LoginService functionality|
 |18.04 | 2 hours | Error fixes, creating architecture diagram |
+|20.04 |4 hours | Familiarization with pandas and adding dataframe creation to ExpenseRepository functionality, creating initial expense table view in UI
+|23.04.| 5 hours | Improving UI - refactoring, renewing expense tables, adding view expense table by category and edit expense functionalities, minor improvements to ExpenseService
 |Total| 25 hours   | |
