@@ -65,10 +65,9 @@ class ExpenseTrackerView:
         expense_overview_button.grid(row=1, column=0, padx=5, pady=5)
         create_expenses_button.grid(row=2, column=0, padx=5, pady=5)
         
-#GOALS:
+
 #TODAY
 #add check validity of input in expense service and error messages in UI
-#add delete expense to expense edits
 
 #BEFORE DDL
 #general edits (test, pylint), manual UI checks!

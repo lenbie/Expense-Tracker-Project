@@ -82,6 +82,9 @@ class ExpenseOverview:
 
         self._get_expense_table()
         self._get_category()
+        expense_list = self.expense_service.list_all_expenses()
+        if expense_list:
+            self._initialize_edit_expenses()
 
     def _get_expense_table(self):
         if self._expense_table:
@@ -100,7 +103,6 @@ class ExpenseOverview:
             self._expense_table.grid(row=4, columnspan=2, sticky='NSEW', padx=5, pady=5)
             self._insert_table_scrollbar(self._expense_table)
 
-            self._initialize_edit_expenses()
         else:
             note=ttk.Label(master=self._frame, text="You do not currently have any recorded expenses", background="#AFE4DE")
             note.grid(row=4, padx=5, pady=5)
@@ -127,7 +129,6 @@ class ExpenseOverview:
 
                 self._insert_table_scrollbar(self._expense_table)
 
-                self._initialize_edit_expenses()
             else:
                 note=ttk.Label(master=self._frame, text="You do not currently have any recorded expenses", background="#AFE4DE")
                 note.grid(row=4, padx=5, pady=5)
@@ -153,7 +154,7 @@ class ExpenseOverview:
         edit_expense_label = ttk.Label(master=self._frame, text="Choose expense to edit by selecting it via click, choose expense aspect to edit in the dropdown and then fill in changed value in the text field.", background="white")
         
         self._selected_editable = StringVar()
-        edit_options = ["Name", "Amount", "Date", "Category"]
+        edit_options = ["Name", "Amount", "Date", "Category", "Delete"]
         edit_expense_dropdown = OptionMenu(self._frame, self._selected_editable, *edit_options)
 
         self._user_change_input = ttk.Entry(master=self._frame)
@@ -176,6 +177,9 @@ class ExpenseOverview:
             old_expense = Expense(chosen_expense_details.get("values")[0], chosen_expense_details.get("values")[1],
                                   chosen_expense_details.get("values")[2], chosen_expense_details.get("values")[3])
 
+            if editable == "Delete":
+                    self.expense_service.delete_expense(old_expense)
+                    
             user_change = self._user_change_input.get()
             if user_change:
                 if editable == "Name":
