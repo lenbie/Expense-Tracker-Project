@@ -15,15 +15,15 @@ The user first chooses and enters their desired username and password, and then 
 ```mermaid
 
     sequenceDiagram
-    actor User
-    User->>UI: enter credentials and click Create account button
-    UI->>LoginService: create_new_user(username, password), e.g. ("Alice", "abcd1234!")
-    LoginService->>UserRepository: find_user("Alice")
-    UserRepository-->>LoginService: None
-    LoginService->>LoginService: validate_password("abcd1234!")
-    LoginService-->>LoginService: True
-    LoginService->>Alice: User("Alice", "abcd1234!")
-    LoginService->>UserRepository: add_user(Alice)
-    UI->>UI: _show_login_view()
+        actor User
+        User->>UI: enter credentials and click Create account button
+        UI->>LoginService: create_new_user(username, password), e.g. ("Alice", "abcd1234!")
+        LoginService->>UserRepository: find_user("Alice")
+        UserRepository-->>LoginService: None
+        LoginService->>LoginService: validate_password("abcd1234!")
+        LoginService-->>LoginService: True
+        LoginService->>Alice: User("Alice", "abcd1234!")
+        LoginService->>UserRepository: add_user(Alice)
+        UI->>UI: _show_login_view()
 
 ```
