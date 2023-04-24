@@ -1,5 +1,4 @@
 from datetime import date
-#import pandas
 from repositories.expense_repository import ExpenseRepository
 from entities.user import User
 from entities.expense import Expense
@@ -216,11 +215,6 @@ class ExpenseService:
 
             return list_of_categories
         return []
-
-    #def get_expense_graph(self):
-        #all_expenses = self.expense_repository.get_all_expenses_as_pandas_dataframe()
-        # if all_expenses:
-
 
 class InvalidInputError(Exception):
     pass
