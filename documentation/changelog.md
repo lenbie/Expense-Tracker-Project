@@ -19,3 +19,11 @@
 - The ExpenseService functionality was built to allow a user to create, edit and delete expenses and expense categories. Users can further view expenses as lists and get the total of their entered expenses, either overall or per category.
 - Tests covering most of the current functionality of the LoginService, ExpenseService, UserRepository, ExpenseRepository were created
 
+### Week 5
+- The user can view all their created expenses chronologically in a table in the graphical UI
+- The user can see the total of all their created expenses in the graphical UI
+- The user can view all expenses per selected category chronologically in the graphical UI
+- The user can edit their expenses (expense name, amount, date, category) in the graphical UI
+- The UI classes were refactored, creating more separated windows for the user to see and simplifying the code structure
+- The ExpenseRepository class now includes functionality to retrieve data as a Pandas dataframe
+- Other minor improvements were made to the ExpenseService class and UI classes
