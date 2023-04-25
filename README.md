@@ -6,6 +6,8 @@
 
 The expense tracker is a useful tool for keeping track of past expenses, and seeing how much has been spent and on what.
 
+Please view and download the week 5 release [here](https://github.com/lenbie/ot-harjoitustyo/releases/tag/viikko5).
+
 ## Python version
 
 Note that Python version 3.10.6 was used for creating and testing this project.
