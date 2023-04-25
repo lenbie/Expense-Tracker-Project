@@ -4,6 +4,8 @@
 
 ## Expense Tracker Project
 
+The expense tracker is a useful tool for keeping track of past expenses, and seeing how much has been spent and on what.
+
 ## Python version
 
 Note that Python version 3.10.6 was used for creating and testing this project.

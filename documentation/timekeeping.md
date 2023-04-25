@@ -13,4 +13,6 @@
 |18.04 | 2 hours | Error fixes, creating architecture diagram |
 |20.04 |4 hours | Familiarization with pandas and adding dataframe creation to ExpenseRepository functionality, creating initial expense table view in UI |
 |23.04.| 5 hours | Improving UI - refactoring, renewing expense tables, adding view expense table by category and edit expense functionalities, minor improvements to ExpenseService |
-|Total| 25 hours   | |
+|24.04.| 30 min | architecture diagram, timekeeping |
+|25.04 | 30 min | changelog, manual testing, making release, README updates|
+|Total| 35 hours   | |
