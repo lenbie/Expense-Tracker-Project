@@ -168,7 +168,8 @@ class ExpenseOverview:
             expense_category_dropdown.grid(row=3, column=1, padx=5, pady=5)
 
     def _initialize_edit_expenses(self):
-        edit_expenses_header=ttk.Label(master=self._frame, text="Edit and Delete Expenses", background="white")
+        edit_expenses_header = ttk.Label(
+            master=self._frame, text="Edit and Delete Expenses", background="white")
         edit_expense_label = ttk.Label(
             master=self._frame, text="Choose expense to edit by selecting it via click, choose expense aspect to edit in the dropdown and then fill in changed value in the text field.", background="#AFE4DE")
 
@@ -180,8 +181,8 @@ class ExpenseOverview:
         self._expense_user_change_input = ttk.Entry(master=self._frame)
 
         edit_expenses_header.grid(row=15, padx=10, pady=10)
-        edit_expense_label.grid(row=16,padx=5, pady=5)
-        edit_expense_dropdown.grid(row=17,padx=5, pady=5)
+        edit_expense_label.grid(row=16, padx=5, pady=5)
+        edit_expense_dropdown.grid(row=17, padx=5, pady=5)
         self._expense_user_change_input.grid(row=18, sticky=(
             constants.E, constants.W), padx=5, pady=5)
 
@@ -231,14 +232,15 @@ class ExpenseOverview:
 
             self._expense_user_change_input.delete(0, constants.END)
             self._get_expense_table()
-    
+
     def _initialize_edit_categories(self):
-        edit_categories_header=ttk.Label(master=self._frame, text="Edit and Delete Categories", background="white")
+        edit_categories_header = ttk.Label(
+            master=self._frame, text="Edit and Delete Categories", background="white")
         edit_categories_label = ttk.Label(
             master=self._frame, text="Choose category to edit or delete by selecting it from the dropdown and to edit, fill in the changed name in the text field. Deleting a category moves all expenses in that category to 'undefined'", background="#AFE4DE")
 
         self._selected_category_editable = StringVar()
-        categories=self.expense_service.list_all_categories()
+        categories = self.expense_service.list_all_categories()
         self._edit_categories_dropdown = OptionMenu(
             self._frame, self._selected_category_editable, *categories)
 
@@ -254,14 +256,15 @@ class ExpenseOverview:
             master=self._frame, text="Edit Category", command=self._edit_categories)
         edit_categories_button.grid(row=24, padx=5, pady=5)
 
-        delete_category_button=ttk.Button(master=self._frame, text="Delete Category", command=self._delete_categories)
+        delete_category_button = ttk.Button(
+            master=self._frame, text="Delete Category", command=self._delete_categories)
         delete_category_button.grid(row=25, padx=5, pady=5)
-    
+
     def _edit_categories(self):
         editable = self._selected_category_editable.get()
-        
+
         if editable:
-            old_category=Category(editable)
+            old_category = Category(editable)
             new_category = self._category_user_change_input.get()
             self.expense_service.rename_category(new_category, old_category)
 
@@ -272,9 +275,9 @@ class ExpenseOverview:
 
     def _delete_categories(self):
         editable = self._selected_category_editable.get()
-        
+
         if editable:
-            old_category=Category(editable)
+            old_category = Category(editable)
             self.expense_service.delete_category(old_category)
             self._edit_categories_dropdown.destroy()
             self._initialize_edit_categories()
@@ -282,4 +285,3 @@ class ExpenseOverview:
 
     def _display_error_message(self, message):
         messagebox.showerror("Error", message)
-        
