@@ -1,4 +1,6 @@
 from datetime import date
+import pandas
+from matplotlib import pyplot
 from repositories.expense_repository import ExpenseRepository
 from entities.user import User
 from entities.expense import Expense
@@ -215,6 +217,18 @@ class ExpenseService:
 
             return list_of_categories
         return []
+
+    def graph_all_expenses(self):
+        dataframe=self.expense_repository.get_all_expenses_as_pandas_dataframe()
+        user_dataframe=dataframe[dataframe["username"]==self.current_user.username]
+        expense_graph= user_dataframe.plot(x="date", y="amount", kind="line", xlabel="Expense Date", ylabel="Expense Amount", legend=False, figsize=(15, 8), style='-o')
+        return expense_graph
+
+    def graph_expenses_by_category(self, category=Category):
+        dataframe=self.expense_repository.get_all_expenses_as_pandas_dataframe()
+        user_dataframe=dataframe[(dataframe["username"]==self.current_user.username)&(dataframe["category"]==category.name)]
+        expense_graph= user_dataframe.plot(x="date", y="amount", kind="line", xlabel="Expense Date", ylabel="Expense Amount", legend=False, figsize=(15, 8), style='-o')
+        return expense_graph
 
 class InvalidInputError(Exception):
     pass

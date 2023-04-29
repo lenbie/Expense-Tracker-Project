@@ -11,6 +11,7 @@ python = "^3.10"
 python-dotenv = "^1.0.0"
 invoke = "^2.0.0"
 pandas = "^2.0.0"
+matplotlib = "^3.7.1"
 
 
 [tool.poetry.group.dev.dependencies]
