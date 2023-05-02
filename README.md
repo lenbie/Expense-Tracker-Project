@@ -22,6 +22,8 @@ The [changelog](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentat
 
 The [architecture description](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/architecture.md) of the application contains information and diagrams on the application's architecture and structure.
 
+The [user manual](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/user_manual.md) contains a detailed guide for how to use the application with screenshots of the UI.
+
 ## Installation
 
 1. Install dependencies through command line using:

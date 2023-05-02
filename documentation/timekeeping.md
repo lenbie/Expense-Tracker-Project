@@ -17,5 +17,5 @@
 |25.04 | 30 min | changelog, manual testing, making release, README updates|
 |28.04 | 3 hours | Adding functionality to edit and delete categories in UI |
 |29.04.| 3 hours | Adding graphing functionality to ExpenseService and to UI |
-|02.05.| 2 hours | Docstring documentation |
-|Total| 41 hours   | |
+|02.05.| 3 hours | Adding and updating documentation, ExpenseService improvements|
+|Total| 44 hours   | |
