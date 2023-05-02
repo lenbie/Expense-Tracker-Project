@@ -15,4 +15,6 @@
 |23.04.| 5 hours | Improving UI - refactoring, renewing expense tables, adding view expense table by category and edit expense functionalities, minor improvements to ExpenseService |
 |24.04.| 30 min | architecture diagram, timekeeping |
 |25.04 | 30 min | changelog, manual testing, making release, README updates|
-|Total| 35 hours   | |
+|28.04 | 3 hours | Adding functionality to edit and delete categories in UI |
+|29.04.| 3 hours | Adding graphing functionality to ExpenseService and to UI |
+|Total| 41 hours   | |

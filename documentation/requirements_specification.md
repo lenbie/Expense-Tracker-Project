@@ -29,8 +29,8 @@ A possible extension to this is creating an administrative user role, with the a
      - [x] The user can choose to view their expenses in a list, or create a graphical representation
      - [x] The list will have a "total" of all expenses at the top, and then show individual expenses in chronological order
         -  [x] The user can also choose to list expenses by a specified category, and they will then be listed in chronological order if they belong to that category
-    -  The graphical representation will show a graph of how the expenses have changed over time
-       -  The user can choose whether they would like to see how the total expenses have changed over time, or if they would like to see how the expenses of a certain category have changed over time
+    - [x] The graphical representation will show a graph of how the expenses have changed over time
+       - [x] The user can choose whether they would like to see how the total expenses have changed over time, or if they would like to see how the expenses of a certain category have changed over time
   - [x]edit their previously created categories
     - [x] The user can view a list of the categories they created in chronological order and edit the category information, or delete categories. Deleting a category with expenses in it will move all those expenses to the predefined category "undefined".
   - [x] edit their previously created expenses

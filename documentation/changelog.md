@@ -27,3 +27,9 @@
 - The UI classes were refactored, creating more separated windows for the user to see and simplifying the code structure
 - The ExpenseRepository class now includes functionality to retrieve data as a Pandas dataframe
 - Other minor improvements were made to the ExpenseService class and UI classes
+
+### Week 6
+- The user can edit and delete previously created categories in the UI
+- The user can choose to view a graph of how their overall spending has developed over time in the UI
+- The user can choose to view a graph of how their spending on a category of their choosing has developed over time in the UI
+- Relevant graphing functionality was added to the ExpenseService class
