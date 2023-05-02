@@ -3,9 +3,17 @@ from services.login_service import login_service, UsernameNotUniqueError, Incorr
 
 
 class CreateAccountView:
+    """This class manages the UI view for creating a new user account
+    """
+
     def __init__(self, root, handle_login):
+        """Class constructor, creates the 'create account' view
+
+        Args:
+            root (Tkinter frame): The Tkinter frame within which the login view resides
+            handle_login: Callable value, called when the user creates an account or clicks the "Return to Login" button
+        """
         self._root = root
-        # self._handle_start_expense_tracker = handle_expense_tracker
         self._handle_login = handle_login
         self._frame = None
         self._style = None
@@ -60,10 +68,14 @@ class CreateAccountView:
         self._frame.grid_columnconfigure(1, weight=1, minsize=200)
 
     def configure(self):
+        """Shows the create account view
+        """
         self._frame.pack(fill=constants.X)
         self._root.configure(background="#AFE4DE")
 
     def destroy(self):
+        """Destroys the create account view
+        """
         self._frame.destroy()
 
     def _handle_create_account_and_continue_to_login_button_click(self):

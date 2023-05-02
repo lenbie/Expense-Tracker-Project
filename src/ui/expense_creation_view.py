@@ -5,7 +5,16 @@ from services.expense_service import ExpenseService, InvalidInputError
 
 
 class ExpenseCreationView:
+    """This class manages the UI view, where a user can create new expenses
+    """
+
     def __init__(self, root, handle_expense_tracker):
+        """Class constructor, creates the expense creation view
+
+        Args:
+            root (Tkinter frame): The Tkinter frame within which the login view resides
+            handle_expense_tracker: Callable value, called when the user chooses to return to the home screen
+        """
         self._root = root
         self._handle_return_to_homescreen = handle_expense_tracker
 
@@ -24,10 +33,14 @@ class ExpenseCreationView:
         self._initialize()
 
     def configure(self):
+        """Shows the expense creation view
+        """
         self._frame.pack(fill=constants.X)
         self._root.configure(background="#AFE4DE")
 
     def destroy(self):
+        """Destroys the expense creation view
+        """
         self._frame.destroy()
 
     def _initialize(self):

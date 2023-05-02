@@ -7,7 +7,18 @@ from entities.expense import Expense
 
 
 class ExpenseOverview:
+    """This class manages the UI view of the expense tracker, where the user can view tables of their
+    entered expenses, and edit their expenses and categories
+    """
+
     def __init__(self, root, expense_tracker, expense_graph):
+        """Class constructor, creates the 'expense overview' view
+
+        Args:
+            root (Tkinter frame): The Tkinter frame within which the login view resides
+            expense_tracker: Callable value, called when the user chooses to return to the expense tracker home screen
+            expense_graph: Callable value, called when the user clicks the "View Expenses as Graph" button
+        """
         self._root = root
         self._handle_return_to_homescreen = expense_tracker
         self._expense_graph_view = expense_graph
@@ -37,10 +48,14 @@ class ExpenseOverview:
         self._initialize()
 
     def configure(self):
+        """Shows the expense overview view
+        """
         self._frame.pack(fill=constants.X)
         self._root.configure(background="#AFE4DE")
 
     def destroy(self):
+        """Destroys the expense overview view
+        """
         self._frame.destroy()
 
     def _initialize(self):

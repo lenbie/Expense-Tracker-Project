@@ -8,7 +8,16 @@ from entities.category import Category
 
 
 class ExpenseGraph:
+    """This class manages the UI view where users can view graphs of their entered expenses
+    """
+
     def __init__(self, root, expense_tracker_homescreen):
+        """Class constructor, creates the 'expense graph' view
+
+        Args:
+            root (Tkinter frame): The Tkinter frame within which the login view resides
+            expense_tracker_homescreen: Callable value, called when the user chooses to return to the home screen of the expense tracker
+        """
         self._root = root
         self._return_to_homescreen = expense_tracker_homescreen
         self._frame = None
@@ -24,10 +33,14 @@ class ExpenseGraph:
         self._initialize()
 
     def configure(self):
+        """Shows the expense graph view
+        """
         self._frame.pack(fill=constants.X)
         self._root.configure(background="#AFE4DE")
 
     def destroy(self):
+        """Destroys the expense graph view
+        """
         self._frame.destroy()
 
     def _initialize(self):

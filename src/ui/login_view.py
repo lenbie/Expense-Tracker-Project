@@ -3,7 +3,17 @@ from services.login_service import login_service, InvalidCredentialsError
 
 
 class LoginView:
+    """This class manages the UI view for user login
+    """
+
     def __init__(self, root, handle_create_account, handle_start_expense_tracker):
+        """Class constructor, creating the login view
+
+        Args:
+            root (Tkinter frame): The Tkinter frame within which the login view resides
+            handle_create_account: Callable value, called when the user clicks the "Create new account" button
+            handle_start_expense_tracker: Callable value, called when the user logs in with valid credentials
+        """
         self._root = root
         self._handle_create_account = handle_create_account
         self._handle_start_expense_tracker = handle_start_expense_tracker
@@ -56,10 +66,14 @@ class LoginView:
         self._frame.grid_columnconfigure(1, weight=1, minsize=200)
 
     def configure(self):
+        """Shows the login view
+        """
         self._frame.pack(fill=constants.X)
         self._root.configure(background="#AFE4DE")
 
     def destroy(self):
+        """Destroys the login view
+        """
         self._frame.destroy()
 
     def _handle_login_button_click(self):

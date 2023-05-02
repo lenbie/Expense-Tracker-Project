@@ -8,11 +8,21 @@ from ui.expense_overview import ExpenseOverview
 
 
 class UI:
+    """This class manages switching between different UI views and windows.
+    """
+
     def __init__(self, root):
+        """Class constructor
+
+        Args:
+            root (Tkinter frame): The root Tkinter frame of the application
+        """
         self._root = root
         self._current_view = None
 
     def start(self):
+        """Shows the UI login view when starting the application.
+        """
         self._show_login_view()
 
     def _hide_current_view(self):
