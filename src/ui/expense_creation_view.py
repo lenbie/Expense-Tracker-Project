@@ -131,15 +131,9 @@ class ExpenseCreationView:
 
         if expense_name and expense_amount:
             try:
-                self.expense_service.check_input_validity_expense_amount(
-                    expense_amount)
-                if expense_date:
-                    self.expense_service.check_input_validity_expense_date(
-                        expense_date)
-
                 self.expense_service.create_new_expense(
                     expense_name, expense_amount, expense_date, expense_category)
-
+ 
                 self._expense_name.delete(0, constants.END)
                 self._expense_amount.delete(0, constants.END)
                 self._expense_date.delete(0, constants.END)

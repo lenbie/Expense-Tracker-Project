@@ -36,11 +36,13 @@ class ExpenseService:
             category (str, optional): Category of the new expense. Defaults to "undefined".
         """
         expense_name = str(name)
+        self.check_input_validity_expense_amount(amount)
         expense_amount = float(amount)
         if not given_date:
             expense_date = str(date.today())
         else:
             expense_date = str(given_date)
+            self.check_input_validity_expense_date(expense_date)
         expense_category = str(category)
         new_expense = Expense(expense_name, expense_amount,
                               expense_date, expense_category)
