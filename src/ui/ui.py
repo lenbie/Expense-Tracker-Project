@@ -28,7 +28,7 @@ class UI:
         """Shows the UI login view when starting the application.
         """
         self._show_login_view()
-    
+
     def _exit(self):
         pyplot.close("all")
         self._root.destroy()

@@ -36,7 +36,7 @@ class ExpenseService:
             category (str, optional): Category of the new expense. Defaults to "undefined".
         """
         expense_name = str(name)
-        
+
         self.check_input_validity_expense_amount(amount)
         expense_amount = float(amount)
 
@@ -365,9 +365,9 @@ class ExpenseService:
         """
         dataframe = self.expense_repository.get_all_expenses_as_pandas_dataframe()
         user_dataframe = dataframe[dataframe["username"]
-                            == self.current_user.username]
+                                   == self.current_user.username]
         expense_graph = user_dataframe.plot(x="date", y="amount",
-                                    kind="line", xlabel="Expense Date", ylabel="Expense Amount",
+                            kind="line", xlabel="Expense Date", ylabel="Expense Amount",
                                     legend=False, figsize=(13, 5), style='-o')
         return expense_graph
 

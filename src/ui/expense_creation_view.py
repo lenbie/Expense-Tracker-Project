@@ -54,23 +54,26 @@ class ExpenseCreationView:
         self._initialize_window_size()
         self._initialize_start_view()
         self._initialize_create_expense_view()
-    
+
     def _initialize_window_size(self):
         window_width = self._root.winfo_screenwidth()//2
         window_height = self._root.winfo_screenheight()//4
-        screen_width = (self._root.winfo_screenwidth() // 2)- (window_width//2)
-        screen_height = (self._root.winfo_screenheight() // 2) - (window_height//2)
+        screen_width = (self._root.winfo_screenwidth() // 2) - \
+            (window_width//2)
+        screen_height = (self._root.winfo_screenheight() //
+                         2) - (window_height//2)
 
-        self._root.geometry(f"{int(window_width)}x{int(window_height)}+{int(screen_width)}+{int(screen_height)}")
+        self._root.geometry(
+            f"{int(window_width)}x{int(window_height)}+{int(screen_width)}+{int(screen_height)}")
 
     def _initialize_start_view(self):
         header_label = ttk.Label(
             master=self._frame, text="Create Expenses", background="#AFE4DE")
 
-        view_edit_expenses_button = ttk.Button(master=self._frame, text="View and Edit Expenses", command=self._handle_view_edit_expenses)
+        view_edit_expenses_button = ttk.Button(
+            master=self._frame, text="View and Edit Expenses", command=self._handle_view_edit_expenses)
         return_to_homescreen_button = ttk.Button(
             master=self._frame, text="Home", command=self._handle_return_to_homescreen)
-
 
         header_label.grid(row=0, columnspan=2, sticky=(
             constants.N), padx=5, pady=5)
@@ -147,7 +150,7 @@ class ExpenseCreationView:
             try:
                 self.expense_service.create_new_expense(
                     expense_name, expense_amount, expense_date, expense_category)
- 
+
                 self._expense_name.delete(0, constants.END)
                 self._expense_amount.delete(0, constants.END)
                 self._expense_date.delete(0, constants.END)

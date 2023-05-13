@@ -84,7 +84,8 @@ class ExpenseOverview:
         home_button = ttk.Button(
             master=self._frame, text="Home", command=self._handle_return_to_homescreen)
 
-        create_expenses_button=ttk.Button(master=self._frame, text="Create Expenses", command=self._handle_create_expense)
+        create_expenses_button = ttk.Button(
+            master=self._frame, text="Create Expenses", command=self._handle_create_expense)
 
         graph_view_button = ttk.Button(
             master=self._frame, text="View expenses as graph", command=self._expense_graph_view)
@@ -95,7 +96,8 @@ class ExpenseOverview:
             constants.NE), padx=5, pady=5)
         create_expenses_button.grid(row=0, column=2, sticky=(
             constants.NE), padx=5, pady=5)
-        graph_view_button.grid(row=0, column=1, padx=5, pady=5, sticky=(constants.NE))
+        graph_view_button.grid(row=0, column=1, padx=5,
+                               pady=5, sticky=(constants.NE))
 
         self._initialize_view_expense_total()
         self._initialize_view_expense_tables()
@@ -195,7 +197,8 @@ class ExpenseOverview:
         if category_options:
             expense_category_dropdown = OptionMenu(
                 self._frame, self._selected_table_category, *category_options)
-            expense_category_dropdown.grid(row=3, column=1, padx=5, pady=5, sticky=(constants.EW))
+            expense_category_dropdown.grid(
+                row=3, column=1, padx=5, pady=5, sticky=(constants.EW))
 
     def _initialize_edit_expenses(self):
         edit_expenses_header = ttk.Label(

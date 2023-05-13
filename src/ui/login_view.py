@@ -65,14 +65,17 @@ class LoginView:
             constants.E, constants.W), padx=5, pady=5)
 
         self._frame.grid_columnconfigure(1, weight=1, minsize=500)
-    
+
     def _initialize_window_size(self):
         window_width = self._root.winfo_screenwidth()//2
         window_height = self._root.winfo_screenheight()//4
-        screen_width = (self._root.winfo_screenwidth() // 2)- (window_width//2)
-        screen_height = (self._root.winfo_screenheight() // 2) - (window_height//2)
+        screen_width = (self._root.winfo_screenwidth() // 2) - \
+            (window_width//2)
+        screen_height = (self._root.winfo_screenheight() //
+                         2) - (window_height//2)
 
-        self._root.geometry(f"{int(window_width)}x{int(window_height)}+{int(screen_width)}+{int(screen_height)}")
+        self._root.geometry(
+            f"{int(window_width)}x{int(window_height)}+{int(screen_width)}+{int(screen_height)}")
 
     def configure(self):
         """Shows the login view
