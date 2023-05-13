@@ -4,7 +4,7 @@
 
 The structure of the application follows a three-level layer architecture, and can be seen here represented as a package diagram:
 
-INSERT DIAGRAM
+![Packaging diagram of the application architecture](./images/architecture_diagram.png)
 
 ## User Interface
 
