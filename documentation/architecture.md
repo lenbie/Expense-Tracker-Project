@@ -21,7 +21,25 @@ Each view is implemented as its own class and only one of them is visible to the
 ## Application Logic
 The logical data model of the application is made up of the classes User, Expense and Category, which describe the application's users, their expenses, and the categories of those expenses:
 
-INSERT DIAGRAM
+```mermaid
+ classDiagram
+      User "1" --> "*" Expense
+      Expense "*" --> "1" Category
+      class User{
+          username
+          password
+      }
+      class Expense{
+          name
+          amount
+          date
+          category
+      }
+      class Category{
+          name
+      }
+      
+```
 
 The classes responsible for application logic are ExpenseService and LoginService. Methods offered by this class are used to manage the logic behind user's interaction with the user interface, and include
 - `create_new_user(username, password)`
