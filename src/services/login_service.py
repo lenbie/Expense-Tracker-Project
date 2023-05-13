@@ -1,3 +1,4 @@
+import string
 from entities.user import User
 
 from repositories.user_repository import UserRepository
@@ -34,17 +35,11 @@ class LoginService:
         """
         password = str(password)
 
-        special_characters = set()
+        special_characters = list(string.punctuation)
         include_special_char = False
 
-        for i in range(33, 48):
-            special_characters.add(chr(i))
-
-        numbers = set()
+        numbers = list(string.digits)
         include_number = False
-
-        for i in range(48, 58):
-            numbers.add(chr(i))
 
         for i in password:
             if i in special_characters:

@@ -26,7 +26,7 @@ class ExpenseService:
         self.expense_repository = expense_repository
         self.current_user = logged_in_user
 
-    def create_new_expense(self, name, amount, given_date=date.today(), category="undefined"):
+    def create_new_expense(self, name, amount, given_date=str(date.today()), category="undefined"):
         """Creates a new expense
 
         Args:
@@ -36,13 +36,16 @@ class ExpenseService:
             category (str, optional): Category of the new expense. Defaults to "undefined".
         """
         expense_name = str(name)
+        
         self.check_input_validity_expense_amount(amount)
         expense_amount = float(amount)
+
         if not given_date:
             expense_date = str(date.today())
         else:
             expense_date = str(given_date)
             self.check_input_validity_expense_date(expense_date)
+
         expense_category = str(category)
         new_expense = Expense(expense_name, expense_amount,
                               expense_date, expense_category)
@@ -365,7 +368,7 @@ class ExpenseService:
                             == self.current_user.username]
         expense_graph = user_dataframe.plot(x="date", y="amount",
                                     kind="line", xlabel="Expense Date", ylabel="Expense Amount",
-                                    legend=False, figsize=(15, 8), style='-o')
+                                    legend=False, figsize=(13, 5), style='-o')
         return expense_graph
 
     def graph_expenses_by_category(self, category=Category):
@@ -383,7 +386,7 @@ class ExpenseService:
             dataframe["category"] == category.name)]
         expense_graph = user_dataframe.plot(
             x="date", y="amount", kind="line", xlabel="Expense Date",
-            ylabel="Expense Amount", legend=False, figsize=(15, 8), style='-o')
+            ylabel="Expense Amount", legend=False, figsize=(13, 5), style='-o')
         return expense_graph
 
 

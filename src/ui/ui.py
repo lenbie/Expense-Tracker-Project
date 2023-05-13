@@ -1,4 +1,6 @@
 from tkinter import Tk
+
+from matplotlib import pyplot
 from ui.login_view import LoginView
 from ui.create_account_view import CreateAccountView
 from ui.expense_tracker_view import ExpenseTrackerView
@@ -20,10 +22,16 @@ class UI:
         self._root = root
         self._current_view = None
 
+        self._root.protocol('WM_DELETE_WINDOW', self._exit)
+
     def start(self):
         """Shows the UI login view when starting the application.
         """
         self._show_login_view()
+    
+    def _exit(self):
+        pyplot.close("all")
+        self._root.destroy()
 
     def _hide_current_view(self):
         if self._current_view:
@@ -60,7 +68,7 @@ class UI:
         self._hide_current_view()
 
         self._current_view = ExpenseOverview(
-            self._root, self._handle_expense_tracker, self._handle_expense_graph)
+            self._root, self._handle_expense_tracker, self._handle_expense_graph, self._handle_expense_creation)
         self._current_view.configure()
 
     def _show_create_account_view(self):
@@ -81,7 +89,7 @@ class UI:
         self._hide_current_view()
 
         self._current_view = ExpenseCreationView(
-            self._root, self._handle_expense_tracker)
+            self._root, self._handle_expense_tracker, self._handle_expense_overview,)
         self._current_view.configure()
 
     def _show_expense_graph_view(self):

@@ -8,7 +8,7 @@ class ExpenseCreationView:
     """This class manages the UI view, where a user can create new expenses
     """
 
-    def __init__(self, root, handle_expense_tracker):
+    def __init__(self, root, handle_expense_tracker, handle_expense_overview):
         """Class constructor, creates the expense creation view
 
         Args:
@@ -17,6 +17,7 @@ class ExpenseCreationView:
         """
         self._root = root
         self._handle_return_to_homescreen = handle_expense_tracker
+        self._handle_view_edit_expenses = handle_expense_overview
 
         self._frame = None
         self._style = None
@@ -45,25 +46,38 @@ class ExpenseCreationView:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        self._frame.grid_columnconfigure(1, weight=1, minsize=200)
+        self._frame.grid_columnconfigure(1, weight=1)
 
         self._style = ttk.Style()
         self._style.configure("TFrame", background="#AFE4DE")
 
+        self._initialize_window_size()
         self._initialize_start_view()
         self._initialize_create_expense_view()
+    
+    def _initialize_window_size(self):
+        window_width = self._root.winfo_screenwidth()//2
+        window_height = self._root.winfo_screenheight()//4
+        screen_width = (self._root.winfo_screenwidth() // 2)- (window_width//2)
+        screen_height = (self._root.winfo_screenheight() // 2) - (window_height//2)
+
+        self._root.geometry(f"{int(window_width)}x{int(window_height)}+{int(screen_width)}+{int(screen_height)}")
 
     def _initialize_start_view(self):
         header_label = ttk.Label(
             master=self._frame, text="Create Expenses", background="#AFE4DE")
 
+        view_edit_expenses_button = ttk.Button(master=self._frame, text="View and Edit Expenses", command=self._handle_view_edit_expenses)
         return_to_homescreen_button = ttk.Button(
             master=self._frame, text="Home", command=self._handle_return_to_homescreen)
 
-        return_to_homescreen_button.grid(row=0, column=3, sticky=(
-            constants.E), padx=5, pady=5)
+
         header_label.grid(row=0, columnspan=2, sticky=(
             constants.N), padx=5, pady=5)
+        view_edit_expenses_button.grid(row=0, column=2, sticky=(
+            constants.NE), padx=5, pady=5)
+        return_to_homescreen_button.grid(row=0, column=3, sticky=(
+            constants.NE), padx=5, pady=5)
 
     def _initialize_create_expense_view(self):
         expense_name_label = ttk.Label(

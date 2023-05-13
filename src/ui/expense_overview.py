@@ -11,7 +11,7 @@ class ExpenseOverview:
     entered expenses, and edit their expenses and categories
     """
 
-    def __init__(self, root, expense_tracker, expense_graph):
+    def __init__(self, root, expense_tracker, expense_graph, expense_creation):
         """Class constructor, creates the 'expense overview' view
 
         Args:
@@ -22,6 +22,7 @@ class ExpenseOverview:
         self._root = root
         self._handle_return_to_homescreen = expense_tracker
         self._expense_graph_view = expense_graph
+        self._handle_create_expense = expense_creation
 
         self._frame = None
         self._style = None
@@ -52,6 +53,8 @@ class ExpenseOverview:
         """
         self._frame.pack(fill=constants.X)
         self._root.configure(background="#AFE4DE")
+        self._root.geometry("")
+        self._root.geometry("+105+105")
 
     def destroy(self):
         """Destroys the expense overview view
@@ -60,7 +63,14 @@ class ExpenseOverview:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        self._frame.grid_columnconfigure(1, weight=1, minsize=200)
+
+        self._frame.grid_columnconfigure(0, weight=1)
+        self._frame.grid_columnconfigure(1, weight=1)
+        self._frame.grid_columnconfigure(2, weight=1)
+        self._frame.grid_columnconfigure(3, weight=1)
+        self._frame.grid_columnconfigure(4, weight=1)
+        for row in range(self._frame.grid_size()[1]):
+            self._frame.grid_rowconfigure(row, weight=1)
 
         self._style = ttk.Style()
         self._style.configure("TFrame", background="#AFE4DE")
@@ -71,13 +81,21 @@ class ExpenseOverview:
         header_label = ttk.Label(
             master=self._frame, text="Your Expenses", background="#AFE4DE")
 
-        logout_button = ttk.Button(
+        home_button = ttk.Button(
             master=self._frame, text="Home", command=self._handle_return_to_homescreen)
 
-        header_label.grid(row=0, columnspan=2, sticky=(
-            constants.N), padx=5, pady=5)
-        logout_button.grid(row=0, column=3, sticky=(
-            constants.E), padx=5, pady=5)
+        create_expenses_button=ttk.Button(master=self._frame, text="Create Expenses", command=self._handle_create_expense)
+
+        graph_view_button = ttk.Button(
+            master=self._frame, text="View expenses as graph", command=self._expense_graph_view)
+
+        header_label.grid(row=0, column=0, sticky=(
+            constants.NW), padx=5, pady=5)
+        home_button.grid(row=0, column=3, sticky=(
+            constants.NE), padx=5, pady=5)
+        create_expenses_button.grid(row=0, column=2, sticky=(
+            constants.NE), padx=5, pady=5)
+        graph_view_button.grid(row=0, column=1, padx=5, pady=5, sticky=(constants.NE))
 
         self._initialize_view_expense_total()
         self._initialize_view_expense_tables()
@@ -95,13 +113,10 @@ class ExpenseOverview:
             master=self._frame, text="View all expenses as table", command=self._get_expense_table)
         table_view_by_category_button = ttk.Button(
             master=self._frame, text="View expenses by category as table", command=self._get_expense_category_table)
-        graph_view_button = ttk.Button(
-            master=self._frame, text="View expenses as graph", command=self._expense_graph_view)
 
         table_view_all_button.grid(row=2, column=0, padx=5, pady=5, sticky=(
             constants.W))
         table_view_by_category_button.grid(row=2, column=1, padx=5, pady=5)
-        graph_view_button.grid(row=1, column=3, padx=10, pady=10)
 
         self._get_expense_table()
         self._get_category()
@@ -126,13 +141,13 @@ class ExpenseOverview:
             for expense in expense_list:
                 self._expense_table.insert("", END, values=expense)
             self._expense_table.grid(
-                row=4, columnspan=2, sticky='NSEW', padx=5, pady=5)
+                row=4, columnspan=2, sticky=(constants.NSEW), padx=5, pady=5)
             self._insert_table_scrollbar(self._expense_table)
 
         else:
             note = ttk.Label(
                 master=self._frame, text="You do not currently have any recorded expenses", background="#AFE4DE")
-            note.grid(row=4, padx=5, pady=5)
+            note.grid(row=4, padx=5, pady=5, sticky=(constants.NSEW))
 
     def _get_expense_category_table(self):
         if self._expense_table:
@@ -155,7 +170,7 @@ class ExpenseOverview:
                 for expense in expense_list:
                     self._expense_table.insert("", END, values=expense)
                 self._expense_table.grid(
-                    row=4, columnspan=2, sticky='NSEW', padx=5, pady=5)
+                    row=4, columnspan=2, sticky=constants.NSEW, padx=5, pady=5)
 
                 self._insert_table_scrollbar(self._expense_table)
 
@@ -172,7 +187,7 @@ class ExpenseOverview:
         scrollbar = ttk.Scrollbar(
             self._frame, orient=VERTICAL, command=table.yview)
         table.configure(yscroll=scrollbar.set)
-        scrollbar.grid(row=4, column=2, sticky='NS')
+        scrollbar.grid(row=4, column=2, sticky=(constants.NS, constants.W))
 
     def _get_category(self):
         self._selected_table_category = StringVar()
@@ -180,11 +195,11 @@ class ExpenseOverview:
         if category_options:
             expense_category_dropdown = OptionMenu(
                 self._frame, self._selected_table_category, *category_options)
-            expense_category_dropdown.grid(row=3, column=1, padx=5, pady=5)
+            expense_category_dropdown.grid(row=3, column=1, padx=5, pady=5, sticky=(constants.EW))
 
     def _initialize_edit_expenses(self):
         edit_expenses_header = ttk.Label(
-            master=self._frame, text="Edit and Delete Expenses", background="white")
+            master=self._frame, text="Edit and Delete Expenses", background="pink")
         edit_expense_label = ttk.Label(
             master=self._frame, text="Choose expense to edit by selecting it via click, choose expense aspect to edit in the dropdown and then fill in changed value in the text field.", background="#AFE4DE")
 
@@ -195,15 +210,19 @@ class ExpenseOverview:
 
         self._expense_user_change_input = ttk.Entry(master=self._frame)
 
-        edit_expenses_header.grid(row=15, padx=10, pady=10)
-        edit_expense_label.grid(row=16, padx=5, pady=5)
-        edit_expense_dropdown.grid(row=17, padx=5, pady=5)
+        edit_expenses_header.grid(row=15, padx=10, pady=10, sticky=(
+            constants.E, constants.W))
+        edit_expense_label.grid(row=16, padx=5, pady=5, sticky=(
+            constants.E, constants.W))
+        edit_expense_dropdown.grid(row=17, padx=5, pady=5, sticky=(
+            constants.E, constants.W))
         self._expense_user_change_input.grid(row=18, sticky=(
             constants.E, constants.W), padx=5, pady=5)
 
         edit_expense_button = ttk.Button(
             master=self._frame, text="Edit Expense", command=self._edit_expenses)
-        edit_expense_button.grid(row=19, padx=5, pady=5)
+        edit_expense_button.grid(row=19, padx=5, pady=5, sticky=(
+            constants.E, constants.W))
 
     def _edit_expenses(self):
         editable = self._selected_expense_editable.get()
@@ -250,7 +269,7 @@ class ExpenseOverview:
 
     def _initialize_edit_categories(self):
         edit_categories_header = ttk.Label(
-            master=self._frame, text="Edit and Delete Categories", background="white")
+            master=self._frame, text="Edit and Delete Categories", background="pink")
         edit_categories_label = ttk.Label(
             master=self._frame, text="Choose category to edit or delete by selecting it from the dropdown and to edit, fill in the changed name in the text field. Deleting a category moves all expenses in that category to 'undefined'", background="#AFE4DE")
 
@@ -261,19 +280,24 @@ class ExpenseOverview:
 
         self._category_user_change_input = ttk.Entry(master=self._frame)
 
-        edit_categories_header.grid(row=20, padx=10, pady=10)
-        edit_categories_label.grid(row=21, padx=5, pady=5)
-        self._edit_categories_dropdown.grid(row=22, padx=5, pady=5)
+        edit_categories_header.grid(row=20, padx=10, pady=10, sticky=(
+            constants.E, constants.W))
+        edit_categories_label.grid(row=21, padx=5, pady=5, sticky=(
+            constants.E, constants.W))
+        self._edit_categories_dropdown.grid(row=22, padx=5, pady=5, sticky=(
+            constants.E, constants.W))
         self._category_user_change_input.grid(row=23, sticky=(
             constants.E, constants.W), padx=5, pady=5)
 
         edit_categories_button = ttk.Button(
             master=self._frame, text="Edit Category", command=self._edit_categories)
-        edit_categories_button.grid(row=24, padx=5, pady=5)
+        edit_categories_button.grid(row=24, padx=5, pady=5, sticky=(
+            constants.E, constants.W))
 
         delete_category_button = ttk.Button(
             master=self._frame, text="Delete Category", command=self._delete_categories)
-        delete_category_button.grid(row=25, padx=5, pady=5)
+        delete_category_button.grid(row=25, padx=5, pady=5, sticky=(
+            constants.E, constants.W))
 
     def _edit_categories(self):
         editable = self._selected_category_editable.get()

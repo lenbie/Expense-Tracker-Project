@@ -59,7 +59,16 @@ class ExpenseTrackerView:
         self._style = ttk.Style()
         self._style.configure("TFrame", background="#AFE4DE")
 
+        self._initialize_window_size()
         self._initialize_start_view()
+    
+    def _initialize_window_size(self):
+        window_width = self._root.winfo_screenwidth()//2
+        window_height = self._root.winfo_screenheight()//4
+        screen_width = (self._root.winfo_screenwidth() // 2)- (window_width//2)
+        screen_height = (self._root.winfo_screenheight() // 2) - (window_height//2)
+
+        self._root.geometry(f"{int(window_width)}x{int(window_height)}+{int(screen_width)}+{int(screen_height)}")
 
     def _handle_logout(self):
         login_service.logout_user()
@@ -80,5 +89,5 @@ class ExpenseTrackerView:
             constants.E), padx=5, pady=5)
         header_label.grid(row=0, columnspan=2, sticky=(
             constants.N), padx=5, pady=5)
-        expense_overview_button.grid(row=1, column=0, padx=5, pady=5)
-        create_expenses_button.grid(row=2, column=0, padx=5, pady=5)
+        expense_overview_button.grid(row=1, column=0, padx=5, pady=5, sticky=(constants.EW))
+        create_expenses_button.grid(row=2, column=0, padx=5, pady=5, sticky=(constants.EW))

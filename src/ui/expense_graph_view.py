@@ -41,10 +41,12 @@ class ExpenseGraph:
     def destroy(self):
         """Destroys the expense graph view
         """
+        pyplot.close("all")
         self._frame.destroy()
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
+        self._initialize_window_size()
         self._table_frame = ttk.Frame(master=self._frame)
         self._frame.grid_columnconfigure(1, weight=1, minsize=200)
 
@@ -68,7 +70,15 @@ class ExpenseGraph:
             note = ttk.Label(
                 master=self._frame, text="You do not currently have any recorded expenses", background="#AFE4DE")
             note.grid(row=4, padx=5, pady=5)
+        
+    def _initialize_window_size(self):
+        window_width = self._root.winfo_screenwidth()//1.125
+        window_height = self._root.winfo_screenheight()//1.25
+        screen_width = (self._root.winfo_screenwidth() // 2)- (window_width//2)
+        screen_height = (self._root.winfo_screenheight() // 2) - (window_height//2)
 
+        self._root.geometry(f"{int(window_width)}x{int(window_height)}+{int(screen_width)}+{int(screen_height)}")
+    
     def _initialize_view_graphs(self):
         show_all_expenses = ttk.Button(
             master=self._frame, text="View graph for all expenses", command=self._display_expense_graph)
