@@ -40,17 +40,29 @@ class ExpenseService:
         self.check_input_validity_expense_amount(amount)
         expense_amount = float(amount)
 
-        if not given_date:
-            expense_date = str(date.today())
-        else:
-            expense_date = str(given_date)
-            self.check_input_validity_expense_date(expense_date)
+        expense_date = self.check_expense_date_and_set_if_not_given(given_date)
 
         expense_category = str(category)
         new_expense = Expense(expense_name, expense_amount,
                               expense_date, expense_category)
 
         self.expense_repository.add_expense(self.current_user, new_expense)
+
+    def check_expense_date_and_set_if_not_given(self, given_date):
+        """Checks whether a valid date is given and sets the date to the current date if no date is given
+
+        Args:
+            given_date (int or None): Date of the new expense
+
+        Returns:
+            The given date, if it is valid, or the current date, if no date is given
+        """
+        if not given_date:
+            expense_date = str(date.today())
+        else:
+            expense_date = str(given_date)
+            self.check_input_validity_expense_date(expense_date)
+        return expense_date
 
     def check_input_validity_expense_amount(self, amount):
         """Checks whether the amount to be entered into database is nonnegative and numeric 
