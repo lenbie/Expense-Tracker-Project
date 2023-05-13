@@ -117,4 +117,4 @@ In the UI, the user can choose to view all expenses as a table or as a graph, or
 
 For viewing expenses as a table, the UI calls the `list_all_expenses` or `list_expenses_by_category` of the ExpenseService class. The latter method takes the chosen category as a parameter. The method then returns a list of expenses (either all expenses, or the expenses of the chosen category) of the logged-in user via the ExpenseRepository.
 
-For viewing expenses as a graph, the UI calls the graph_all_expenses or graph_expenses_by_category method of the ExpenseService class. The latter method takes the chosen category as a parameter. The method then plots all relevant expenses using a pandas dataframe, gotten via the get_all_expenses_as_pandas_dataframe method of the ExpenseRepository class.
+For viewing expenses as a graph, the UI calls the `graph_all_expenses` or `graph_expenses_by_category` method of the ExpenseService class. The latter method takes the chosen category as a parameter. The method then plots all relevant expenses using a pandas dataframe, gotten via the `get_all_expenses_as_pandas_dataframe` method of the ExpenseRepository class.
