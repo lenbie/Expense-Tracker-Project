@@ -4,9 +4,45 @@
 
 The structure of the application follows a three-level layer architecture, and can be seen here represented as a package diagram:
 
-![Packaging diagram of the application's structure](./images/class_diagram.png)
+INSERT DIAGRAM
+
+## User Interface
+
+The user interface contains six different views:
+- Login
+- Creating a new account
+- Expense tracker home screen
+- Expense creation (create new expenses)
+- Expense overview (to view expense tables and edit expenses)
+- Expense graph view (view expenses as graphs)
+
+Each view is implemented as its own class and only one of them is visible to the user at a time. The UI class handles the interaction between the different views (e.g. switching from one to the other, closing the first and displaying the second). The view classes are separated from the application logic as much as possible, and they call methods from both the ExpenseService and LoginService class. By repeatedly calling such methods, the data displayed in the UI is kept up-to-date with changes made by the user in the UI - for example, if a user edits an expense name, the expense table is updated using the list_all_expenses() method of the ExpenseService class, and it then shows the expense with the new name. 
 
 ## Application Logic
+The logical data model of the application is made up of the classes User, Expense and Category, which describe the application's users, their expenses, and the categories of those expenses:
+
+INSERT DIAGRAM
+
+The classes responsible for application logic are ExpenseService and LoginService. Methods offered by this class are used to manage the logic behind user's interaction with the user interface, and include
+- create_new_user(username, password)
+- create_expense(name, amount, date, category)
+- rename_category(new_category_name, category)
+- list_all_expenses()
+
+The LoginService class uses the UserRepository class to access the user data (usernames, passwords), and the ExpenseService class uses the ExpenseRepository class to access data about users and their expenses.
+
+The relationship between the classes of the application logic is specified further in the following packaging diagram:
+![Packaging diagram of the application logic](./images/class_diagram.png)
+
+## Permanent storage of data
+The UserRepository classes and the ExpenseRepository classes handle data storage and retrieval. Both classes use an SQLite database, which contains two tables.
+
+The *users* table contains information on usernames and passwords, and the *expenses* table contains data about the expenses associated with users. The details of how data storage is handled is contained only within the repository classes, and thus separate from further application logic.
+
+The database_initialization file handles the creation of the SQLite database and its tables.
+The .env configuration file at the root of the application's repository handles the naming of the database file.
+
+## Main Functionalities
 
 ### Creating a User 
 

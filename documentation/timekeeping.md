@@ -18,4 +18,6 @@
 |28.04 | 3 hours | Adding functionality to edit and delete categories in UI |
 |29.04.| 3 hours | Adding graphing functionality to ExpenseService and to UI |
 |02.05.| 3 hours | Adding and updating documentation, ExpenseService improvements|
+|12.05 | 2 hours | Trying out possible UI improvements, minor fixes |
+|13.05 | 5 hours | Implementing UI improvements, minor improvements throughout the application, updating and adding documentation|
 |Total| 44 hours   | |

@@ -53,8 +53,6 @@ class ExpenseOverview:
         """
         self._frame.pack(fill=constants.X)
         self._root.configure(background="#AFE4DE")
-        self._root.geometry("")
-        self._root.geometry("+105+105")
 
     def destroy(self):
         """Destroys the expense overview view
@@ -77,6 +75,18 @@ class ExpenseOverview:
 
         self._initialize_start_view()
 
+    def _initialize_window_size(self):
+        self._root.geometry("")
+        window_width = self._root.winfo_screenwidth()//2
+        window_height = self._root.winfo_screenheight()//4
+        screen_width = (self._root.winfo_screenwidth() // 2) - \
+            (window_width//2)
+        screen_height = (self._root.winfo_screenheight() //
+                         2) - (window_height//2)
+
+        self._root.geometry(
+            f"{int(window_width)}x{int(window_height)}+{int(screen_width)}+{int(screen_height)}")
+        
     def _initialize_start_view(self):
         header_label = ttk.Label(
             master=self._frame, text="Your Expenses", background="#AFE4DE")
@@ -124,8 +134,12 @@ class ExpenseOverview:
         self._get_category()
         expense_list = self.expense_service.list_all_expenses()
         if expense_list:
+            self._root.geometry("")
+            self._root.geometry("+105+105")
             self._initialize_edit_expenses()
             self._initialize_edit_categories()
+        else:
+            self._initialize_window_size()
 
     def _get_expense_table(self):
         if self._expense_table:

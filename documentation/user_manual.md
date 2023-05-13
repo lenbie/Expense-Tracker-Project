@@ -32,7 +32,7 @@ If you do not yet have an account, you first need to create one. You can do this
 Once clicking the *Create new account* button, you see the following screen.
 ![Create Account View](./images/create_account_view.png)
 
-You can create an account by entering your chosen username and password, and clicking the *Create account and return to Login* button The password must be at least 8 characters long and contain at least 1 number and 1 special character (!"#$%&'*+,-./).
+You can create an account by entering your chosen username and password, and clicking the *Create account and return to Login* button The password must be at least 8 characters long and contain at least 1 number and 1 special character of the following: !"#$%&'()*+,-/:;<=>?@[\]^_`{|}~.
 
 If the account was successfully created, you will return to the Login View, and you will need to enter your details there to go to the expense tracker itself.
 Otherwise, you will get an error message explaining the issue as a popup. You can close it by clicking the *OK* button, or the 'x' in the top right corner, and then fix the issue and try creating the account again.
@@ -42,7 +42,7 @@ If you do not want to create an account, you can return to login by clicking the
 ## Expense Tracker Home 
 After logging in successfully, you will be taken to the Expense Tracker Home screen.
 
-![Expense Tracker Home View](./images/expense_tracker_home.png)
+![Expense Tracker Home View](./images/expense_tracker_homescreen.png)
 
 From here, you can choose to create new expenses by clicking the *Create Expenses* button.
 You can also choose to view and edit your previously created expenses by clicking the *View and Edit Expenses* button. Most of that functionality is available only after you have created at least one expense.
@@ -60,6 +60,7 @@ You can also choose to enter the expense date and category. If you do not enter 
 
 Once you have entered all desired information, you can create the expense by clicking *Create new expense*.
 You can return to the expense tracker homescreen by clicking *Home* in the top right corner.
+You can also go to *View and Edit Expenses* by clicking the button with the same name.
 
 ## View and Edit Expenses View
 

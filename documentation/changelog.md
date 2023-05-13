@@ -33,3 +33,6 @@
 - The user can choose to view a graph of how their overall spending has developed over time in the UI
 - The user can choose to view a graph of how their spending on a category of their choosing has developed over time in the UI
 - Relevant graphing functionality was added to the ExpenseService class
+
+### Week 7
+- The UI is easier to navigate now, and the screens are centered and the sizes are more consistent for small or big windows respectively
