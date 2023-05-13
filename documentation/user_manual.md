@@ -1,5 +1,14 @@
 # User Manual
 
+## Configuration
+The name of the database file is automatically configured through the .env file in the application's root directory, and the file will be created in the data directory. If desired, the filename can be changed in the .env file.
+
+The following file format is used:
+
+```bash
+DATABASE_FILE=database.sqlite
+```
+
 ## Starting the application
 
 1. Install dependencies through command line using:
