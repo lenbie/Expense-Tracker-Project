@@ -8,8 +8,8 @@ The expense tracker is a useful tool for keeping track of past expenses, and see
 
 ## Releases
 - [**Final release**](https://github.com/lenbie/ot-harjoitustyo/releases/tag/final_release)
-- [**Week 6 release**](https://github.com/lenbie/ot-harjoitustyo/releases/tag/viikko6).
-- [**Week 5 release**](https://github.com/lenbie/ot-harjoitustyo/releases/tag/viikko5).
+- [**Week 6 release**](https://github.com/lenbie/ot-harjoitustyo/releases/tag/viikko6)
+- [**Week 5 release**](https://github.com/lenbie/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Python version
 
