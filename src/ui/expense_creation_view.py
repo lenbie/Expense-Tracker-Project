@@ -126,7 +126,8 @@ class ExpenseCreationView:
         self._selected_category.set("undefined")
 
         category_options = self.expense_service.list_all_categories()
-        category_options.append("undefined")
+        if not category_options:
+            category_options.append("undefined")
 
         if category_options:
             expense_category_dropdown = OptionMenu(

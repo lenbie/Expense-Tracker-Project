@@ -68,7 +68,7 @@ class UI:
         self._hide_current_view()
 
         self._current_view = ExpenseOverview(
-            self._root, self._handle_expense_tracker, self._handle_expense_graph, self._handle_expense_creation)
+            self._root, self._handle_expense_tracker, self._handle_expense_graph, self._handle_expense_creation, self._handle_expense_overview)
         self._current_view.configure()
 
     def _show_create_account_view(self):
@@ -89,12 +89,12 @@ class UI:
         self._hide_current_view()
 
         self._current_view = ExpenseCreationView(
-            self._root, self._handle_expense_tracker, self._handle_expense_overview,)
+            self._root, self._handle_expense_tracker, self._handle_expense_overview)
         self._current_view.configure()
 
     def _show_expense_graph_view(self):
         self._hide_current_view()
 
         self._current_view = ExpenseGraph(
-            self._root, self._handle_expense_tracker)
+            self._root, self._handle_expense_tracker, self._handle_expense_overview)
         self._current_view.configure()

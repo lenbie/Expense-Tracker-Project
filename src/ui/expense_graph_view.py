@@ -11,7 +11,7 @@ class ExpenseGraph:
     """This class manages the UI view where users can view graphs of their entered expenses
     """
 
-    def __init__(self, root, expense_tracker_homescreen):
+    def __init__(self, root, expense_tracker_homescreen, expense_overview):
         """Class constructor, creates the 'expense graph' view
 
         Args:
@@ -20,6 +20,8 @@ class ExpenseGraph:
         """
         self._root = root
         self._return_to_homescreen = expense_tracker_homescreen
+        self._view_edit_expenses = expense_overview
+
         self._frame = None
         self._style = None
 
@@ -57,9 +59,11 @@ class ExpenseGraph:
             master=self._frame, text="View Your Expense History as Graphs", background="#AFE4DE")
         return_to_homescreen = ttk.Button(
             master=self._frame, text="Home", command=self._return_to_homescreen)
+        return_to_view_edit_expenses = ttk.Button(master=self._frame, text="View and Edit Expenses", command=self._view_edit_expenses)
 
         return_to_homescreen.grid(row=0, column=3, sticky=(
-            constants.E), padx=5, pady=5)
+            constants.NE), padx=5, pady=5)
+        return_to_view_edit_expenses.grid(row=0, column=2, sticky=(constants.NE), padx=5, pady=5)
         header_label.grid(row=0, columnspan=2, sticky=(
             constants.N), padx=5, pady=5)
 

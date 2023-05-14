@@ -11,7 +11,7 @@ class ExpenseOverview:
     entered expenses, and edit their expenses and categories
     """
 
-    def __init__(self, root, expense_tracker, expense_graph, expense_creation):
+    def __init__(self, root, expense_tracker, expense_graph, expense_creation, expense_overview):
         """Class constructor, creates the 'expense overview' view
 
         Args:
@@ -23,6 +23,7 @@ class ExpenseOverview:
         self._handle_return_to_homescreen = expense_tracker
         self._expense_graph_view = expense_graph
         self._handle_create_expense = expense_creation
+        self._expense_overview = expense_overview
 
         self._frame = None
         self._style = None
@@ -278,6 +279,15 @@ class ExpenseOverview:
 
             if editable == "Delete":
                 self.expense_service.delete_expense(old_expense)
+                
+                remaining_expenses=self.expense_service.list_all_expenses()
+                if not remaining_expenses:
+                    self._expense_overview()
+                    return
+
+                else:
+                    self._get_category_dropdown()
+                    self._initialize_edit_categories()
 
             user_change = self._expense_user_change_input.get()
 
@@ -305,6 +315,8 @@ class ExpenseOverview:
                 elif editable == "Category":
                     self.expense_service.edit_expense_category(
                         user_change, old_expense)
+                    self._get_category_dropdown()
+                    self._initialize_edit_categories()
 
             self._expense_user_change_input.delete(0, constants.END)
             self._get_expense_table()
@@ -317,29 +329,32 @@ class ExpenseOverview:
 
         self._selected_category_editable = StringVar()
         categories = self.expense_service.list_all_categories()
-        self._edit_categories_dropdown = OptionMenu(
-            self._frame, self._selected_category_editable, *categories)
+        if categories:
+            self._edit_categories_dropdown = OptionMenu(
+                self._frame, self._selected_category_editable, *categories)
 
-        self._category_user_change_input = ttk.Entry(master=self._frame)
+            self._category_user_change_input = ttk.Entry(master=self._frame)
 
-        edit_categories_header.grid(row=20, padx=10, pady=10, sticky=(
-            constants.E, constants.W))
-        edit_categories_label.grid(row=21, padx=5, pady=5, sticky=(
-            constants.E, constants.W))
-        self._edit_categories_dropdown.grid(row=22, padx=5, pady=5, sticky=(
-            constants.E, constants.W))
-        self._category_user_change_input.grid(row=23, sticky=(
-            constants.E, constants.W), padx=5, pady=5)
+            edit_categories_header.grid(row=20, padx=10, pady=10, sticky=(
+                constants.E, constants.W))
+            edit_categories_label.grid(row=21, padx=5, pady=5, sticky=(
+                constants.E, constants.W))
+            self._edit_categories_dropdown.grid(row=22, padx=5, pady=5, sticky=(
+                constants.E, constants.W))
+            self._category_user_change_input.grid(row=23, sticky=(
+                constants.E, constants.W), padx=5, pady=5)
 
-        edit_categories_button = ttk.Button(
-            master=self._frame, text="Edit Category", command=self._edit_categories)
-        edit_categories_button.grid(row=24, padx=5, pady=5, sticky=(
-            constants.E, constants.W))
+            edit_categories_button = ttk.Button(
+                master=self._frame, text="Edit Category", command=self._edit_categories)
+            edit_categories_button.grid(row=24, padx=5, pady=5, sticky=(
+                constants.E, constants.W))
 
-        delete_category_button = ttk.Button(
-            master=self._frame, text="Delete Category", command=self._delete_categories)
-        delete_category_button.grid(row=25, padx=5, pady=5, sticky=(
-            constants.E, constants.W))
+            delete_category_button = ttk.Button(
+                master=self._frame, text="Delete Category", command=self._delete_categories)
+            delete_category_button.grid(row=25, padx=5, pady=5, sticky=(
+                constants.E, constants.W))
+
+            self._get_category_dropdown()
 
     def _edit_categories(self):
         editable = self._selected_category_editable.get()
