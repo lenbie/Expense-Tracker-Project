@@ -95,6 +95,6 @@ After clicking the *View expenses as graph* button on the "View and Edit Expense
 
 ![Expense Graph View](./images/expense_graph_view.png)
 
-You can also view a graphical representation of your spending history in a certiain category, by choosing a category from the dropdown menu in the middle of the screen, and then clicking the *View graph for expenses by category* button.
+You can also view a graphical representation of your spending history in a certain category, by choosing a category from the dropdown menu in the middle of the screen, and then clicking the *View graph for expenses by category* button.
 
 You can return to the expense tracker home screen by clicking the *Home* button on the top right, and you can return to the *View and Edit Expenses* page by clicking the respective button, also in the top right of the screen.

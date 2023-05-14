@@ -9,7 +9,7 @@ class LoginService:
     This includes creating a new user account, and logging in to and out of an existing account. 
     """
 
-    def __init__(self, user_repository=UserRepository):
+    def __init__(self, user_repository: UserRepository):
         """Class constructor
 
         Args:

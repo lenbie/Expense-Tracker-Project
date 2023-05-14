@@ -14,7 +14,7 @@ class ExpenseRepository:
         """
         self._connection = connect_to_database()
 
-    def add_expense(self, user=User, expense=Expense):
+    def add_expense(self, user: User, expense: Expense):
         """Adds new expense for a user into database
 
         Args:
@@ -36,7 +36,7 @@ class ExpenseRepository:
 
         self._connection.commit()
 
-    def find_expense(self, user=User, expense=Expense):
+    def find_expense(self, user: User, expense: Expense):
         """Finds a specified expense in database and returns database row object 
 
         Args:
@@ -76,7 +76,7 @@ class ExpenseRepository:
 
         return found
 
-    def delete_expense(self, user=User, expense=Expense):
+    def delete_expense(self, user: User, expense: Expense):
         """Deletes a specified expense belonging to a specified user
 
         Args:
@@ -132,7 +132,7 @@ class ExpenseRepository:
 
         return found
 
-    def get_all_expenses_by_user(self, user=User):
+    def get_all_expenses_by_user(self, user: User):
         """Returns all expenses belonging to a specified user
 
         Args:
@@ -161,7 +161,7 @@ class ExpenseRepository:
 
         return found
 
-    def get_all_expenses_by_category_and_user(self, user=User, category=Category):
+    def get_all_expenses_by_category_and_user(self, user: User, category: Category):
         """Returns all expenses within a specified category belonging to a certain user
 
         Args:

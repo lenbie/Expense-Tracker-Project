@@ -11,7 +11,7 @@ class UserRepository:
         """
         self._connection = connect_to_database()
 
-    def add_user(self, user=User):
+    def add_user(self, user:User):
         """Adding a new user's information to database
 
         Args:

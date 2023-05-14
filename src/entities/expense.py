@@ -14,7 +14,15 @@ class Expense:
 
     """
 
-    def __init__(self, name=str, amount=float, given_date=date.today(), category="undefined"):
+    def __init__(self, name, amount, given_date=date.today(), category="undefined"):
+        """Class constructor
+
+        Args:
+            name (str): The expense name
+            amount (float): The expense amount
+            given_date (str, optional): The expense date. Defaults to date.today().
+            category (str, optional): The expense category. Defaults to "undefined".
+        """
         self.name = name
         self.amount = amount
         self.date = given_date

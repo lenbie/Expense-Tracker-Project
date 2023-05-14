@@ -13,7 +13,7 @@ class ExpenseService:
     user-specific for the current logged in user.
     """
 
-    def __init__(self, expense_repository=ExpenseRepository, logged_in_user=User):
+    def __init__(self, expense_repository: ExpenseRepository, logged_in_user: User):
         """Class constructor
 
         Args:
@@ -104,7 +104,7 @@ class ExpenseService:
                 """Invalid input. Make sure you have entered a nonnegative
                 numeric amount and a valid date in YYYY-MM-DD format""") from exc
 
-    def edit_expense_name(self, new_expense_name, expense=Expense):
+    def edit_expense_name(self, new_expense_name, expense: Expense):
         """Changes the name of an existing expense
 
         Args:
@@ -129,7 +129,7 @@ class ExpenseService:
             return True
         return False
 
-    def edit_expense_amount(self, new_expense_amount, expense=Expense):
+    def edit_expense_amount(self, new_expense_amount, expense: Expense):
         """Changes the amount of an existing expense if the new amount is valid
 
         Args:
@@ -155,7 +155,7 @@ class ExpenseService:
             return True
         return False
 
-    def edit_expense_category(self, new_category_name, expense=Expense):
+    def edit_expense_category(self, new_category_name, expense: Expense):
         """Changes the category of an existing expense
 
         Args:
@@ -179,7 +179,7 @@ class ExpenseService:
             return True
         return False
 
-    def edit_expense_date(self, new_expense_date, expense=Expense):
+    def edit_expense_date(self, new_expense_date, expense: Expense):
         """Changes the date of an existing expense if the new date is valid
 
         Args:
@@ -204,7 +204,7 @@ class ExpenseService:
             return True
         return False
 
-    def delete_expense(self, expense=Expense):
+    def delete_expense(self, expense: Expense):
         """Deletes a specified expense
 
         Args:
@@ -223,7 +223,7 @@ class ExpenseService:
             return True
         return False
 
-    def delete_category(self, category=Category):
+    def delete_category(self, category: Category):
         """Deletes a specified category and adds all expenses
         within that category to the "undefined" category
 
@@ -251,7 +251,7 @@ class ExpenseService:
             return True
         return False
 
-    def rename_category(self, new_category_name, category=Category):
+    def rename_category(self, new_category_name, category: Category):
         """Renames a specified category
 
         Args:
@@ -292,7 +292,7 @@ class ExpenseService:
             total += expense["amount"]
         return total
 
-    def get_total_by_category_and_user(self, category=Category):
+    def get_total_by_category_and_user(self, category: Category):
         """Calculates and returns the total amount of all expenses wihthin a
         specified category, belonging to the current user.
 
@@ -326,7 +326,7 @@ class ExpenseService:
 
         return list_of_expenses
 
-    def list_expenses_by_category(self, category=Category):
+    def list_expenses_by_category(self, category: Category):
         """Returns a list of all expenses belonging to a specified category
         and the current user
 
@@ -385,7 +385,7 @@ class ExpenseService:
                                     legend=False, figsize=(13, 5), style='-o')
         return expense_graph
 
-    def graph_expenses_by_category(self, category=Category):
+    def graph_expenses_by_category(self, category: Category):
         """Returns a line graph of the expenses of a specified category
         of the current user by their amount over time
 

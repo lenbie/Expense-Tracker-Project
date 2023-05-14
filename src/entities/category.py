@@ -7,4 +7,9 @@ class Category:
     """
 
     def __init__(self, name="undefined"):
+        """Class constructor
+
+        Args:
+            name (str, optional): The category's name Defaults to "undefined".
+        """
         self.name = name
