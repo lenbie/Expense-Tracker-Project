@@ -2,7 +2,7 @@
 
 ## The purpose of the application
 
-My application is a an expense tracker to help users with keeping track of their spending, including how much they spend, when, and on what kinds of things, so they can budget well and spend wisely. Users can input and later edit that information, and choose to view it in a list format or graphically visualized. For a user to use the expense tracker, they need to create an account and sign in with valid credentials. 
+My application is a an expense tracker to help users with keeping track of their spending, including how much they spend, when, and on what kinds of things, so they can budget well and spend wisely. Users can input and later edit that information, and choose to view it in a table format or graphically visualized. For a user to use the expense tracker, they need to create an account and sign in with valid credentials. 
 
 ## Users
 
@@ -28,11 +28,11 @@ There is a regular user role in the system, which involves being able to make an
      - The table displays rows of individual expenses in chronological order
         -  The user can also choose to view a table of expenses belonging to a selected category, and they will then be listed in chronological order if they belong to that category
     - The graphical representation shows a graph of how the expenses have changed over time
-       - he user can choose whether they would like to see how all of their expenses have changed over time, or if they would like to see how the expenses of a category of their choosing have changed over time 
-  - Edit their previously created categories
+       - The user can choose whether they would like to see how all of their expenses have changed over time, or if they would like to see how the expenses of a category of their choosing have changed over time 
+  - Edit and delete their previously created categories
     - The user can view a dropdown menu of the categories they created, and then edit the name of a selected cetegory, or delete the category. Deleting a category with expenses in it will move all those expenses to the predefined category "undefined". Renaming a category retains all expenses within that category, but assigns the new category name to all of them.
-  - Edit their previously created expenses
-    - When viewing the table of expenses, the user can click on an expense to edit, and edit the expense information of any of the expenses, i.e. the name, amount, date or category of that expense.
+  - Edit and delete their previously created expenses
+    - When viewing the table of expenses, the user can click on an expense to edit, and edit the expense information of any of the expenses, i.e. the name, amount, date or category of that expense. The user can also delete that expense
 - The user can navigate between the different functionalities of the expense tracker by clicking buttons that switch between windows, and by utilizing the expense tracker home screen, which they get to after logging in.
 - When the user wishes to exit the application, they can log out of their account from the home screen.
 
