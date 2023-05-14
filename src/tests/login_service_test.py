@@ -14,25 +14,25 @@ class TestLoginService(unittest.TestCase):
         test_repository.delete_all_users()
 
     def test_validate_password(self):
-        valid = self.test_login_service.validate_password("1234abc!")
+        valid = self.test_login_service._validate_password("1234abc!")
 
         self.assertEqual(valid, True)
 
     def test_invalid_password_too_short(self):
         with self.assertRaises(Exception) as context:
-            self.test_login_service.validate_password("1a!")
+            self.test_login_service._validate_password("1a!")
 
         self.assertTrue("Incorrect password format" in str(context.exception))
 
     def test_invalid_password_no_number(self):
         with self.assertRaises(Exception) as context:
-            self.test_login_service.validate_password("abcdefg!")
+            self.test_login_service._validate_password("abcdefg!")
 
         self.assertTrue("Incorrect password format" in str(context.exception))
 
     def test_invalid_password_no_special_char(self):
         with self.assertRaises(Exception) as context:
-            self.test_login_service.validate_password("abcdefg1")
+            self.test_login_service._validate_password("abcdefg1")
 
         self.assertTrue("Incorrect password format" in str(context.exception))
 
@@ -54,7 +54,7 @@ class TestLoginService(unittest.TestCase):
 
     def test_create_user_invalid_password(self):
         with self.assertRaises(Exception) as context:
-            self.test_login_service.validate_password("abcdefg1")
+            self.test_login_service._validate_password("abcdefg1")
 
         self.assertTrue("Incorrect password format" in str(context.exception))
 

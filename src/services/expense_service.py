@@ -37,10 +37,10 @@ class ExpenseService:
         """
         expense_name = str(name)
 
-        self.check_input_validity_expense_amount(amount)
+        self._check_input_validity_expense_amount(amount)
         expense_amount = float(amount)
 
-        expense_date = self.check_expense_date_and_set_if_not_given(given_date)
+        expense_date = self._check_expense_date_and_set_if_not_given(given_date)
 
         expense_category = str(category)
         new_expense = Expense(expense_name, expense_amount,
@@ -48,7 +48,7 @@ class ExpenseService:
 
         self.expense_repository.add_expense(self.current_user, new_expense)
 
-    def check_expense_date_and_set_if_not_given(self, given_date):
+    def _check_expense_date_and_set_if_not_given(self, given_date):
         """Checks whether a valid date is given and sets the date to the current date if no date is given
 
         Args:
@@ -61,10 +61,10 @@ class ExpenseService:
             expense_date = str(date.today())
         else:
             expense_date = str(given_date)
-            self.check_input_validity_expense_date(expense_date)
+            self._check_input_validity_expense_date(expense_date)
         return expense_date
 
-    def check_input_validity_expense_amount(self, amount):
+    def _check_input_validity_expense_amount(self, amount):
         """Checks whether the amount to be entered into database is nonnegative and numeric 
 
         Args:
@@ -85,7 +85,7 @@ class ExpenseService:
             raise InvalidInputError("""Invalid input. Make sure you have entered a nonnegative
                 numeric amount and a valid date in YYYY-MM-DD format""")
 
-    def check_input_validity_expense_date(self, given_date):
+    def _check_input_validity_expense_date(self, given_date):
         """Checks whether the date to be entered into database is a valid date.
 
         Args:
@@ -140,7 +140,7 @@ class ExpenseService:
         found = self.expense_repository.find_expense(
             self.current_user, expense)
         if found:
-            self.check_input_validity_expense_amount(new_expense_amount)
+            self._check_input_validity_expense_amount(new_expense_amount)
 
             old_expense = Expense(
                 found["name"], found["amount"], found["date"], found["category"])
@@ -190,7 +190,7 @@ class ExpenseService:
         found = self.expense_repository.find_expense(
             self.current_user, expense)
         if found:
-            self.check_input_validity_expense_date(new_expense_date)
+            self._check_input_validity_expense_date(new_expense_date)
             old_expense = Expense(
                 found["name"], found["amount"], found["date"], found["category"])
             self.expense_repository.delete_expense(

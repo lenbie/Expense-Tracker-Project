@@ -19,7 +19,7 @@ class LoginService:
         self.user_repository = user_repository
         self.logged_in_user = None
 
-    def validate_password(self, password):
+    def _validate_password(self, password):
         """Checks that a chosen password is valid, i.e. is at least 8 characters long,
         and includes at least one number and one special character
 
@@ -71,7 +71,7 @@ class LoginService:
 
         if found is None:
 
-            password_test = self.validate_password(password)
+            password_test = self._validate_password(password)
 
             if password_test is True:
 

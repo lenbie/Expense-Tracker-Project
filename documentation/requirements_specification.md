@@ -23,6 +23,7 @@ There is a regular user role in the system, which involves being able to make an
       - For time, the user can input a time in format YYYY-MM-DD, or if left blank, the time will default to the time when the user created the expense
   -  View existing expenses
      - When the user chooses to view their expenses, they see a total of all their entered expenses at the top of the screen
+     - When the user chooses to view their expenses as a table per category, they will see a total of the spending in that category, instead of the total of all expenses
      - The user can choose to view their expenses in a table, or as a graph
      - The table displays rows of individual expenses in chronological order
         -  The user can also choose to view a table of expenses belonging to a selected category, and they will then be listed in chronological order if they belong to that category

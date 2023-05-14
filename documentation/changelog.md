@@ -36,3 +36,4 @@
 
 ### Week 7
 - The UI is easier to navigate now, and the screens are centered and the sizes are more consistent for small or big windows respectively
+- The View and Edit Expenses (Expense Overview) UI screen now includes the functionality for a user to see the total of their spending in a category, when they are viewing the table for that category

@@ -39,6 +39,9 @@ class ExpenseOverview:
         self._selected_table_category = None
         self._expense_table = None
 
+        self._display_total = None
+        self._display_category_total = None
+
         self._selected_expense_editable = None
         self._expense_user_change = None
 
@@ -114,11 +117,21 @@ class ExpenseOverview:
 
     def _initialize_view_expense_total(self):
         total = self.expense_service.get_total_all_expenses_by_user()
-        display_total = ttk.Label(
+        self._display_total = ttk.Label(
             master=self._frame, text=f"Total amount spent: {total} €", background="#AFE4DE")
 
-        display_total.grid(row=1, sticky=(
+        self._display_total.grid(row=1, sticky=(
             constants.W), padx=5, pady=5)
+        
+    def _initialize_view_category_total(self, category):
+        if self._display_total:
+            self._display_total.destroy()
+        total = self.expense_service.get_total_by_category_and_user(category)
+        self._display_category_total = ttk.Label(
+            master=self._frame, text=f"Total spending in the {category.name} category: {total} €", background="#AFE4DE")
+
+        self._display_category_total.grid(row=1,
+                    sticky=(constants.W), padx=5, pady=5)
 
     def _initialize_view_expense_tables(self):
         table_view_all_button = ttk.Button(
@@ -131,7 +144,8 @@ class ExpenseOverview:
         table_view_by_category_button.grid(row=2, column=1, padx=5, pady=5)
 
         self._get_expense_table()
-        self._get_category()
+        self._get_category_dropdown()
+
         expense_list = self.expense_service.list_all_expenses()
         if expense_list:
             self._root.geometry("")
@@ -144,6 +158,11 @@ class ExpenseOverview:
     def _get_expense_table(self):
         if self._expense_table:
             self._delete_table()
+
+        if self._display_category_total:
+            self._display_category_total.destroy()
+
+        self._initialize_view_expense_total()
 
         expense_list = self.expense_service.list_all_expenses()
 
@@ -169,11 +188,17 @@ class ExpenseOverview:
         if self._expense_table:
             self._delete_table()
 
+        if self._display_category_total:
+            self._display_category_total.destroy()
+
         category = self._selected_table_category.get()
 
         if category:
             expense_list = self.expense_service.list_expenses_by_category(
                 Category(category))
+
+            self._initialize_view_category_total(Category(category))
+
             if expense_list:
 
                 column_names = ["Expense Name", "Amount", "Date", "Category"]
@@ -205,7 +230,7 @@ class ExpenseOverview:
         table.configure(yscroll=scrollbar.set)
         scrollbar.grid(row=4, column=2, sticky=(constants.NS, constants.W))
 
-    def _get_category(self):
+    def _get_category_dropdown(self):
         self._selected_table_category = StringVar()
         category_options = self.expense_service.list_all_categories()
         if category_options:

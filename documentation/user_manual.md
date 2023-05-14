@@ -77,9 +77,9 @@ After clicking the *View and Edit Expenses* button, you will see the following v
 
 ![View and Edit Expenses View](./images/view_edit_expenses.png)
 
-You can see a total of all entered expenses at the top left. Below that, the button *View all expenses as table* displays all entered expenses in a table, as shown in the picture. If a lot of expenses have been entered, you can navigate through them with the scrollbar on the right of the table. 
+Upon navigating to this this view, you can see a total of all entered expenses at the top left. Below that, the button *View all expenses as table* displays all entered expenses in a table, as shown in the picture. If a lot of expenses have been entered, you can navigate through them with the scrollbar on the right of the table. 
 
-You can also choose to *View expenses by category as table*. Before clicking that button, you need to select the category from the dropdown below the button.
+You can also choose to *View expenses by category as table*. Before clicking that button, you need to select the category from the dropdown below the button. After selecting a category and clicking the button, you will see a total of your spending in that category in the top left corner, instead of the total for all expenses previously displayed. If you click on *View all expenses as table*, the totall will once again reflect all your spending.
 
 Below the table, you can edit and delete your expenses and categories.
 To edit or delete an expense, you need to first click on the expense. It will then turn blue, as shown in the picture. Then, you need to select what you want to edit (e.g. expense name, amount, date or category), or if you want to delete the expense from the dropdown. If you want to edit, you also need to fill in the new value (e.g. the new name) in the text field. Once all that is done, you click *Edit Expense*. 
