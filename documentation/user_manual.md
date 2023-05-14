@@ -54,7 +54,7 @@ After logging in successfully, you will be taken to the Expense Tracker Home scr
 ![Expense Tracker Home View](./images/expense_tracker_homescreen.png)
 
 From here, you can choose to create new expenses by clicking the *Create Expenses* button.
-You can also choose to view and edit your previously created expenses by clicking the *View and Edit Expenses* button. Most of that functionality is available only after you have created at least one expense.
+You can also choose to view and edit your previously created expenses by clicking the *View and Edit Expenses* button. Most of that functionality is available only if you have created at least one expense.
 
 You can also log out from the expense tracker by clicking the *Log out* button in the top right corner. This will take you back to the Login view.
 
@@ -82,12 +82,12 @@ Upon navigating to this this view, you can see a total of all entered expenses a
 You can also choose to *View expenses by category as table*. Before clicking that button, you need to select the category from the dropdown below the button. After selecting a category and clicking the button, you will see a total of your spending in that category in the top left corner, instead of the total for all expenses previously displayed. If you click on *View all expenses as table*, the totall will once again reflect all your spending.
 
 Below the table, you can edit and delete your expenses and categories.
-To edit or delete an expense, you need to first click on the expense. It will then turn blue, as shown in the picture. Then, you need to select what you want to edit (e.g. expense name, amount, date or category), or if you want to delete the expense from the dropdown. If you want to edit, you also need to fill in the new value (e.g. the new name) in the text field. Once all that is done, you click *Edit Expense*. 
+To edit or delete an expense, you need to first click on the expense. It will then turn blue, as shown in the picture. Then, you need to select what you want to edit (e.g. expense name, amount, date or category), or if you want to delete the expense from the dropdown. If you want to edit, you also need to fill in the new value (e.g. the new name) in the text field. Once all that is done, you click *Edit Expense*.
 
-To edit or delete a category, you choose the relevant category from the dropdown menu. If you want to delete it, you click the button *Delete Category*. Deleting a category does not delete all expenses in that category, but moves all of them to the "undefined" category. That category cannot be deleted. If you want to edit your selected category, you also need to enter the new category name in the text field, and then click *Edit Category*.
+To edit or delete a category, you choose the relevant category from the dropdown menu. If you want to delete it, you click the button *Delete Category*. Deleting a category does not delete all expenses in that category, but moves all of them to the "undefined" category. That category cannot be deleted, although if you rename it, all expenses currently in 'undefined' will move to that category, and there will temporarily be no expenses under the 'undefined' category. If you want to edit your selected category, you also need to enter the new category name in the text field, and then click *Edit Category*.
 
 From this screen, you can navigate to view graph representations of your expenses via the *View expenses as graph* button on the top right. 
-You can also return to the expense tracker home screen by clicking the *Home* button on the top right.
+You can also return to the expense tracker home screen by clicking the *Home* button on the top right, and you can naviagte to the Create Expenses View by clicking the *Create Expenses* button on the top right.
 
 ## Expense Graph View
 
@@ -97,4 +97,4 @@ After clicking the *View expenses as graph* button on the "View and Edit Expense
 
 You can also view a graphical representation of your spending history in a certiain category, by choosing a category from the dropdown menu in the middle of the screen, and then clicking the *View graph for expenses by category* button.
 
-You can return to the expense tracker home screen by clicking the *Home* button on the top right.
+You can return to the expense tracker home screen by clicking the *Home* button on the top right, and you can return to the *View and Edit Expenses* page by clicking the respective button, also in the top right of the screen.

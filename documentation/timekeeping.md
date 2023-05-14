@@ -20,5 +20,5 @@
 |02.05.| 3 hours | Adding and updating documentation, ExpenseService improvements|
 |12.05 | 2 hours | Trying out possible UI improvements, minor fixes |
 |13.05 | 5 hours | Implementing UI improvements, minor improvements throughout the application, updating and adding documentation|
-|14.05| 2 hours | Final improvements, adding category total to UI |
-|Total| 53 hours   | |
+|14.05| 3 hours | Final improvements, adding category total to UI, bug fixes |
+|Total| 54 hours   | |
