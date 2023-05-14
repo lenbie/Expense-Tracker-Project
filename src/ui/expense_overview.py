@@ -90,7 +90,7 @@ class ExpenseOverview:
 
         self._root.geometry(
             f"{int(window_width)}x{int(window_height)}+{int(screen_width)}+{int(screen_height)}")
-        
+
     def _initialize_start_view(self):
         header_label = ttk.Label(
             master=self._frame, text="Your Expenses", background="#AFE4DE")
@@ -123,7 +123,7 @@ class ExpenseOverview:
 
         self._display_total.grid(row=1, sticky=(
             constants.W), padx=5, pady=5)
-        
+
     def _initialize_view_category_total(self, category):
         if self._display_total:
             self._display_total.destroy()
@@ -132,7 +132,7 @@ class ExpenseOverview:
             master=self._frame, text=f"Total spending in the {category.name} category: {total} €", background="#AFE4DE")
 
         self._display_category_total.grid(row=1,
-                    sticky=(constants.W), padx=5, pady=5)
+                                          sticky=(constants.W), padx=5, pady=5)
 
     def _initialize_view_expense_tables(self):
         table_view_all_button = ttk.Button(
@@ -279,8 +279,8 @@ class ExpenseOverview:
 
             if editable == "Delete":
                 self.expense_service.delete_expense(old_expense)
-                
-                remaining_expenses=self.expense_service.list_all_expenses()
+
+                remaining_expenses = self.expense_service.list_all_expenses()
                 if not remaining_expenses:
                     self._expense_overview()
                     return

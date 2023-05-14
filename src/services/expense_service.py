@@ -40,7 +40,8 @@ class ExpenseService:
         self._check_input_validity_expense_amount(amount)
         expense_amount = float(amount)
 
-        expense_date = self._check_expense_date_and_set_if_not_given(given_date)
+        expense_date = self._check_expense_date_and_set_if_not_given(
+            given_date)
 
         expense_category = str(category)
         new_expense = Expense(expense_name, expense_amount,
@@ -49,7 +50,8 @@ class ExpenseService:
         self.expense_repository.add_expense(self.current_user, new_expense)
 
     def _check_expense_date_and_set_if_not_given(self, given_date):
-        """Checks whether a valid date is given and sets the date to the current date if no date is given
+        """Checks whether a valid date is given and
+            sets the date to the current date if no date is given
 
         Args:
             given_date (int or None): Date of the new expense
