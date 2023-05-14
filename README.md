@@ -27,6 +27,8 @@ The [architecture description](https://github.com/lenbie/ot-harjoitustyo/blob/ma
 
 The [user manual](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/user_manual.md) contains a detailed guide for how to use the application with screenshots of the UI.
 
+The [testing document](https://github.com/lenbie/ot-harjoitustyo/blob/master/documentation/testing_document.md) provides detail on how the application was tested.
+
 ## Installation
 
 1. Install dependencies through command line using:
